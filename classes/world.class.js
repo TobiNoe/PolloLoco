@@ -3,8 +3,12 @@ class World {
     chickens = [
         new Chicken(),
         new Chicken(),
-        new Chicken(),
-    ]
+        new Chicken()
+    ];
+    clouds = [
+        new Cloud(),
+        new Cloud()
+    ];
     canvas;
     ctx;
 
@@ -22,6 +26,12 @@ class World {
         this.chickens.forEach(chicken => {
             this.ctx.drawImage(chicken.img, chicken.x, chicken.y, chicken.width, chicken.height);
         });
+
+        this.clouds.forEach(cloud => {
+            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
+        });
+
+
 
        /*  let pos = 100;
         for (let i = 0; i < this.chickens.length; i++) {
