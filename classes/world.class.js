@@ -42,14 +42,6 @@ class World {
         });
 
 
-
-        /*  let pos = 100;
-         for (let i = 0; i < this.chickens.length; i++) {
-             const chicken = this.chickens[i];
-             this.ctx.drawImage(chicken.img, chicken.x + pos, chicken.y, chicken.width, chicken.height);
-             pos = pos + 100;
-         } */
-
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
