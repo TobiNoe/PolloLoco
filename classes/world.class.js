@@ -1,4 +1,9 @@
 class World {
+    layers = [
+        new LayerObject('./img/5_background/layers/3_third_layer/1.png'),
+        new LayerObject('./img/5_background/layers/2_second_layer/1.png'),
+        new LayerObject('./img/5_background/layers/1_first_layer/1.png')
+    ];
     character = new Character();
     chickens = [
         new Chicken(),
@@ -21,6 +26,11 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        this.layers.forEach(layer =>{
+            this.ctx.drawImage(layer.img, layer.x, layer.y, layer.width, layer.height);
+        });
+        
+
         this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
 
         this.chickens.forEach(chicken => {
@@ -33,12 +43,12 @@ class World {
 
 
 
-       /*  let pos = 100;
-        for (let i = 0; i < this.chickens.length; i++) {
-            const chicken = this.chickens[i];
-            this.ctx.drawImage(chicken.img, chicken.x + pos, chicken.y, chicken.width, chicken.height);
-            pos = pos + 100;
-        } */
+        /*  let pos = 100;
+         for (let i = 0; i < this.chickens.length; i++) {
+             const chicken = this.chickens[i];
+             this.ctx.drawImage(chicken.img, chicken.x + pos, chicken.y, chicken.width, chicken.height);
+             pos = pos + 100;
+         } */
 
         let self = this;
         requestAnimationFrame(function () {
