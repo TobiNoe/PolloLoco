@@ -1,9 +1,9 @@
 class World {
     layers = [
-        new LayerObject('./img/5_background/layers/air.png'),
-        new LayerObject('./img/5_background/layers/3_third_layer/1.png'),
-        new LayerObject('./img/5_background/layers/2_second_layer/1.png'),
-        new LayerObject('./img/5_background/layers/1_first_layer/1.png')
+        new LayerObject('./img/5_background/layers/air.png', 0, 0),
+        new LayerObject('./img/5_background/layers/3_third_layer/1.png', 0, 0),
+        new LayerObject('./img/5_background/layers/2_second_layer/1.png', 0, 0),
+        new LayerObject('./img/5_background/layers/1_first_layer/1.png', 0, 0)
     ];
     character = new Character();
     chickens = [
@@ -27,25 +27,24 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.layers.forEach(layer =>{
-            this.ctx.drawImage(layer.img, layer.x, layer.y, layer.width, layer.height);
-        });
-        
-
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-
-        this.chickens.forEach(chicken => {
-            this.ctx.drawImage(chicken.img, chicken.x, chicken.y, chicken.width, chicken.height);
-        });
-
-        this.clouds.forEach(cloud => {
-            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
-        });
-
+        this.drawObjectsIntoMap(this.layers);
+        this.drawObjectsIntoMap(this.clouds);
+        this.drawObjectsIntoMap(this.chickens);
+        this.drawIntoMap(this.character);
 
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
+    }
+
+    drawObjectsIntoMap(arr){
+        arr.forEach(obj => {
+            this.drawIntoMap(obj);
+        });   
+    }
+
+    drawIntoMap(obj) {
+        this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);  
     }
 }
