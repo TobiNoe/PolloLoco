@@ -19,6 +19,5 @@ class Cloud extends MovableObject {
         setInterval(() => {
             this.x -= this.move;            
         }, 1000 / 60);
-   
     }
 }
