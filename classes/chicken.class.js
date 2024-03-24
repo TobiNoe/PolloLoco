@@ -13,14 +13,15 @@ class Chicken extends MovableObject {
         this.x = 200 + Math.random() * 500;
         this.loadImages(this.imagesWalking);
         this.animate();
-        /* this.width = 75;
-        this.height = 75; */
+        this.speed = 0.10 + Math.random() * 0.25;
+        console.log(this.speed);
     }
 
     animate() {
+        this.moveLeft(this.speed);
         setInterval(() => {
             let i = this.currentImage % this.imagesWalking.length;
-            // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
+            // Modulo Operation speichert immer den rest 0,1,2,0,1,...
             let path = this.imagesWalking[i];
             this.img = this.imgCache[path];
             this.currentImage++;
