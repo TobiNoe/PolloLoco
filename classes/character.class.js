@@ -11,6 +11,7 @@ class Character extends MovableObject {
         './img/2_character_pepe/2_walk/W-26.png'
     ];
     world;
+    speed = 1;
 
     constructor() {
         super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
@@ -20,10 +21,19 @@ class Character extends MovableObject {
     }
 
     animate() {
+
         setInterval(() => {
             if (this.world.keyboard.right) {
+                this.x += this.speed;
+            }
 
+            if (this.world.keyboard.left) {
+                this.x -= this.speed;
+            }
+        }, 1000 / 60);
 
+        setInterval(() => {
+            if (this.world.keyboard.right || this.world.keyboard.left) {
                 let i = this.currentImage % this.imagesWalking.length;
                 // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
                 let path = this.imagesWalking[i];
