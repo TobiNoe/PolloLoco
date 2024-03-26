@@ -16,7 +16,7 @@ class Character extends MovableObject {
     constructor() {
         super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.imagesWalking);
-        this.x = 50;
+        this.x = 20;
         this.animate();
     }
 
@@ -32,6 +32,9 @@ class Character extends MovableObject {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
+
+            //Layer move with Character
+            this.world.cameraX = -this.x + 20;
         }, 1000 / 60);
 
         setInterval(() => {
