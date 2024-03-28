@@ -1,7 +1,7 @@
 class World {
     character = new Character();
     layers = level1.layers;
-    chickens = level1.chickens ;
+    enemies = level1.enemies;
     clouds = level1.clouds;
     canvas;
     ctx;
@@ -28,7 +28,7 @@ class World {
 
         this.drawObjectsIntoMap(this.layers);
         this.drawObjectsIntoMap(this.clouds);
-        this.drawObjectsIntoMap(this.chickens);
+        this.drawObjectsIntoMap(this.enemies);
         this.drawIntoMap(this.character);
 
         this.ctx.translate(-this.cameraX, 0);

@@ -1,11 +1,11 @@
 class Level {
     layers;
-    chickens;
+    enemies;
     clouds;
     
-    constructor (layers, chickens, clouds) {
+    constructor (layers, enemies, clouds) {
         this.layers = layers;
-        this.chickens = chickens;
+        this.enemies = enemies;
         this.clouds = clouds;
     }
 }
