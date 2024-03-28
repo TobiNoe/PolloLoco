@@ -23,18 +23,20 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
-            if (this.world.keyboard.right) {
+            if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                console.log(this.x);
+                console.log(this.world.level.levelEndX);
             }
 
-            if (this.world.keyboard.left) {
+            if (this.world.keyboard.left && this.x > -250) {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
 
             //Layer move with Character
-            this.world.cameraX = -this.x + 20;
+            this.world.cameraX = -this.x + 50;
         }, 1000 / 60);
 
         setInterval(() => {
