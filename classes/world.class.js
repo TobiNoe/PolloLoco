@@ -26,7 +26,9 @@ class World {
 
         this.drawObjectsIntoMap(this.level.layers);
         this.drawObjectsIntoMap(this.level.clouds);
+        this.drawObjectsIntoMap(this.level.objects);
         this.drawObjectsIntoMap(this.level.enemies);
+        
         this.drawIntoMap(this.character);
 
         this.ctx.translate(-this.cameraX, 0);

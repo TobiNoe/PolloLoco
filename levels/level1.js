@@ -35,5 +35,13 @@ const level1 = new Level(
     [
         new Cloud(),
         new Cloud()
+    ],
+    [
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle()  
     ]
 );
