@@ -5,7 +5,7 @@ class MovableObject {
     height = 250;
     img;
     imgCache = {};
-    currentImage = 0;   
+    currentImage = 0;
     speed;
     otherDirection = false;
 
@@ -15,7 +15,7 @@ class MovableObject {
         this.img.src = path;
     }
 
-    loadImages(arr){
+    loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
             img.src = path;
@@ -30,11 +30,15 @@ class MovableObject {
 
     moveLeft() {
         setInterval(() => {
-            this.x -= this.speed;            
+            this.x -= this.speed;
         }, 1000 / 60);
     }
 
     playAnimation(images) {
-        
+        let i = this.currentImage % this.imagesWalking.length;
+        // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
+        let path = images[i];
+        this.img = this.imgCache[path];
+        this.currentImage++;
     }
 }
