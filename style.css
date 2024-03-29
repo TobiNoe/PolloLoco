@@ -1,9 +1,27 @@
+* {
+    margin: 0;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-image: URL('./img/5_background/complete_background.png');
+    object-fit: cover;
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }
 
 canvas {
     background: black;
+    border: solid thin black;
 }
