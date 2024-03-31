@@ -9,12 +9,4 @@ class Coin extends MovableObject {
         this.y = 250 - Math.random() * 100;
     }
 
-
-    animate() {
-        setInterval(() => {
-            this.img.style.rotateY(90);
-        }, 200);
-    }
-
-
 }
