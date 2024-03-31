@@ -11,7 +11,7 @@ class Character extends MovableObject {
         './img/2_character_pepe/2_walk/W-21.png'
     ];
     world;
-    speed = 1;
+    speed = 10; // speed default 1
     walkingSound = new Audio('../audio/walking.mp3');
 
     constructor() {
