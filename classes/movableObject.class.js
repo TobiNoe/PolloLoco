@@ -14,13 +14,9 @@ class MovableObject {
 
     //jump() into character
     applyGravity() {
-        let z = 0;
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
-                z++;
-                console.log('y: ', this.y);
-                console.log(z);
                 this.speedY -= this.acceleration;
                 console.log(this.acceleration);
             }
@@ -64,6 +60,6 @@ class MovableObject {
     }
 
     jump() {
-        this.speedY = 18;
+        this.speedY = 16;
     }
 }
