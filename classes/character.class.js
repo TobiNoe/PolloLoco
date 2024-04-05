@@ -1,6 +1,6 @@
 class Character extends MovableObject {
     x = 20;
-    y = 78;
+    y = 178;
     width = 100;
     height = 250;
     imagesWalking = [
@@ -23,7 +23,7 @@ class Character extends MovableObject {
         './img/2_character_pepe/3_jump/J-39.png'
     ];
     world;
-    speed = 10; // speed default 1
+    speed = 1; // speed default 1
     walkingSound = new Audio('../audio/walking.mp3');
 
     constructor() {
@@ -55,6 +55,10 @@ class Character extends MovableObject {
 
             }
 
+            if (this.world.keyboard.space && this.y >= 178) {
+                this.speedY = 15;
+            }
+
             //Layer move with Character
             this.world.cameraX = -this.x + 50;
         }, 1000 / 60);
@@ -71,7 +75,6 @@ class Character extends MovableObject {
     }
 
     jump() {
-
-
+        
     }
 }
