@@ -4,12 +4,12 @@ class Character extends MovableObject {
     width = 100;
     height = 250;
     imagesWalking = [
+        './img/2_character_pepe/2_walk/W-21.png',
         './img/2_character_pepe/2_walk/W-22.png',
         './img/2_character_pepe/2_walk/W-23.png',
         './img/2_character_pepe/2_walk/W-24.png',
         './img/2_character_pepe/2_walk/W-25.png',
-        './img/2_character_pepe/2_walk/W-26.png',
-        './img/2_character_pepe/2_walk/W-21.png'
+        './img/2_character_pepe/2_walk/W-26.png'
     ];
     imagesJumping = [
         './img/2_character_pepe/3_jump/J-31.png',
@@ -27,11 +27,10 @@ class Character extends MovableObject {
     walkingSound = new Audio('../audio/walking.mp3');
 
     constructor() {
-        super().loadImage('./img/2_character_pepe/2_walk/W-21.png');
+        super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.imagesWalking);
         this.loadImages(this.imagesJumping);
         this.applyGravity();
-        /* this.x = 20; */
         this.animate();
     }
 
@@ -40,23 +39,19 @@ class Character extends MovableObject {
         setInterval(() => {
             this.walkingSound.pause();
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
-                this.x += this.speed;
-                this.otherDirection = false;
-                /* console.log(this.x);
-                console.log(this.world.level.levelEndX); */
-
+                this.moveRight();
                 /* this.walkingSound.play(); */
             }
 
             if (this.world.keyboard.left && this.x > -250) {
-                this.x -= this.speed;
+                this.moveLeft();
                 this.otherDirection = true;
                 /* this.walkingSound.play(); */
 
             }
 
-            if (this.world.keyboard.space && this.y >= 178) {
-                this.speedY = 15;
+            if (this.world.keyboard.space && !this.isAboveGround()) {
+                this.jump();
             }
 
             //Layer move with Character
@@ -72,9 +67,5 @@ class Character extends MovableObject {
                 }
             }
         }, 100);
-    }
-
-    jump() {
-        
     }
 }

@@ -11,16 +11,20 @@ class MovableObject {
     speedY = 0;
     acceleration = 1;
 
-    
+
     //jump() into character
     applyGravity() {
+        let z = 0;
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
-                console.log(this.speedY);
+                z++;
+                console.log('y: ', this.y);
+                console.log(z);
                 this.speedY -= this.acceleration;
+                console.log(this.acceleration);
             }
-        }, 1000 / 25);
+        }, 1000 / 30);
     }
 
     isAboveGround() {
@@ -42,14 +46,13 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right');
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        this.x -= this.speed;
     }
 
     playAnimation(images) {
@@ -58,5 +61,9 @@ class MovableObject {
         let path = images[i];
         this.img = this.imgCache[path];
         this.currentImage++;
+    }
+
+    jump() {
+        this.speedY = 18;
     }
 }
