@@ -28,8 +28,9 @@ class Character extends MovableObject {
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
                 this.x += this.speed;
                 this.otherDirection = false;
-                console.log(this.x);
-                console.log(this.world.level.levelEndX);
+                /* console.log(this.x);
+                console.log(this.world.level.levelEndX); */
+                
                 /* this.walkingSound.play(); */
             }
 
