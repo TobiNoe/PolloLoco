@@ -48,10 +48,7 @@ class World {
     drawIntoMap(obj) {
         /*  otherDirection = true / Taste nach Links wurde gedrückt  */
         if (obj.otherDirection) {
-            this.ctx.save(); // Einstellungen werden gespeichert
-            this.ctx.translate(obj.width, 0); // Der Translate-Befehl setzt die gedrehte Position des Objektes neu, indem die Breite des Objektes abgezogen wird
-            this.ctx.scale(-1, 1); // Das Pbjekt wird negiert (gedreht) in den Canvas gelade (scaliert)
-            obj.x = obj.x * -1; //Die x-Koordinate des Objektes muß einmal negiert werden, weil die X-Achse im Cnavas umgedreht wird (0 ist jetzt Rechts)
+            this.flipImage(obj);
         }
 
         //draw Object
@@ -59,16 +56,22 @@ class World {
 
         //draw rectangle
         obj.drawFrame(this.ctx);
-        this.ctx.beginPath();
-        this.ctx.lineWidth = "4";
-        this.ctx.strokeStyle = "green";
-        this.ctx.rect(obj.x, obj.y, obj.width, obj.height);
-        this.ctx.stroke();
 
         /*  otherDirection = false / Taste nach Links wurde nicht gedrückt  */
         if (obj.otherDirection) {
-            this.ctx.restore(); // Normale Einstellungen des Canvas werden wieder geladen
-            obj.x = obj.x * -1; // X-Achse wird wieder zurück gedreht (0 ist wieder Links)
+            this.flipImageBack(obj);
         }
+    }
+
+    flipImage(obj) {
+        this.ctx.save(); // Einstellungen werden gespeichert
+        this.ctx.translate(obj.width, 0); // Der Translate-Befehl setzt die gedrehte Position des Objektes neu, indem die Breite des Objektes abgezogen wird
+        this.ctx.scale(-1, 1); // Das Pbjekt wird negiert (gedreht) in den Canvas gelade (scaliert)
+        obj.x = obj.x * -1; //Die x-Koordinate des Objektes muß einmal negiert werden, weil die X-Achse im Cnavas umgedreht wird (0 ist jetzt Rechts)
+    }
+
+    flipImageBack(obj) {
+        this.ctx.restore(); // Normale Einstellungen des Canvas werden wieder geladen
+        obj.x = obj.x * -1; // X-Achse wird wieder zurück gedreht (0 ist wieder Links)
     }
 }
