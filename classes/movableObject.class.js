@@ -76,4 +76,17 @@ class MovableObject {
             ctx.stroke();
         }
     }
+
+    // Bessere Formel zur Kollisionsberechnung (Genauer)
+    isColliding(obj) {
+        return this.x + this.width > obj.x &&
+            this.y + this.height > obj.y &&
+            this.x < obj.x &&
+            this.y < obj.y + obj.height;
+
+        /*return (this.x + this.width) >= obj.X && this.x <= (obj.X + obj.width) &&
+            (this.y + this.offsetY + this.height) >= obj.Y &&
+            (this.y + this.offsetY) <= (obj.Y + obj.height) &&
+            obj.onCollisionCourse; */
+    }
 }
