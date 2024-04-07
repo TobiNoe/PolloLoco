@@ -1,7 +1,3 @@
-/**
- * Class representing a Chicken object.
- * @extends MovableObject
- */
 class Chicken extends MovableObject {
     /**
      * Create a Chicken instance.
