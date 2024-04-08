@@ -20,7 +20,6 @@ window.addEventListener('keydown', (e) => {
     /* console.log(e); */
     if (e.code === 'Space'){
         keyboard.space = true;
-        console.log(keyboard.space);
     } 
 
     if (e.code === 'ArrowRight'){
@@ -36,7 +35,6 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('keyup', (e) => {
     if (e.code === 'Space'){
         keyboard.space = false;
-        console.log(keyboard.space);
     } 
 
     if (e.code === 'ArrowRight'){

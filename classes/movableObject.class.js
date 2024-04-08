@@ -10,6 +10,7 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 1;
+    energy = 100;
 
 
     //jump() into character
@@ -18,7 +19,6 @@ class MovableObject {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
-                console.log(this.acceleration);
             }
         }, 1000 / 30);
     }
