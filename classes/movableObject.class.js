@@ -89,4 +89,15 @@ class MovableObject {
             (this.y + this.offsetY) <= (obj.Y + obj.height) &&
             obj.onCollisionCourse; */
     }
+
+    hit() {
+        this.energy -= 2;
+        if (this.energy < 0) {
+            this.energy = 0;
+        }
+    }
+
+    isDead() {
+        return this.energy == 0;
+    }
 }
