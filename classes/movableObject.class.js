@@ -42,8 +42,10 @@ class MovableObject {
     }
 
     moveRight() {
-        this.x += this.speed;
-        this.otherDirection = false;
+        if (!this.isDead()) {
+            this.x += this.speed;
+            this.otherDirection = false;   
+        } 
     }
 
 
@@ -98,6 +100,6 @@ class MovableObject {
     }
 
     isDead() {
-        return this.energy == 0;
+        return this.energy === 0;
     }
 }
