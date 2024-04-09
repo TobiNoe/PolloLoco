@@ -11,6 +11,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 1;
     energy = 100;
+    lastHit = 0;
 
 
     //jump() into character
@@ -54,7 +55,7 @@ class MovableObject {
     }
 
     playAnimation(images) {
-        let i = this.currentImage % this.imagesWalking.length;
+        let i = this.currentImage % images.length;
         // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
         let path = images[i];
         this.img = this.imgCache[path];
@@ -96,7 +97,15 @@ class MovableObject {
         this.energy -= 2;
         if (this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
+    }
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
+        timePassed = timePassed / 1000;
+        return timePassed < 0.5; 
     }
 
     isDead() {
