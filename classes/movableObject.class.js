@@ -1,10 +1,10 @@
-class MovableObject {
-    x = 100;
+class MovableObject extends DrawableObject{
+    /* x = 100;
     y = 120;
     width = 100;
     height = 250;
     img;
-    imgCache = {};
+    imgCache = {}; */
     currentImage = 0;
     speed;
     otherDirection = false;
@@ -29,7 +29,7 @@ class MovableObject {
     }
 
 
-    loadImage(path) {
+    /* loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
@@ -40,7 +40,7 @@ class MovableObject {
             img.src = path;
             this.imgCache[path] = img;
         });
-    }
+    } */
 
     moveRight() {
         if (!this.isDead()) {
@@ -66,9 +66,9 @@ class MovableObject {
         this.speedY = 16;
     }
 
-    draw(ctx) {
+    /* draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    } */
 
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chick || this instanceof Chicken) {
