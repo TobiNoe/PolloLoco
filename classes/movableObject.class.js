@@ -5,7 +5,7 @@ class MovableObject extends DrawableObject{
     height = 250;
     img;
     imgCache = {}; */
-    currentImage = 0;
+    /* currentImage = 0; */
     speed;
     otherDirection = false;
     speedY = 0;
