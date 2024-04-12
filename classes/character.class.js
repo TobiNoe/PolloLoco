@@ -73,6 +73,7 @@ class Character extends MovableObject {
 
             //Layer move with Character
             this.world.cameraX = -this.x + 50;
+
         }, 1000 / 60);
 
         setInterval(() => {
