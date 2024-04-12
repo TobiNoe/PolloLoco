@@ -26,7 +26,8 @@ class World {
             this.level.enemies.forEach( (enemy) => {
                 if (this.character.isColliding(enemy) ) {
                     this.character.hit();
-                    console.log('Collision with Character, Energy', this.character.energy);
+                    this.statusBar.setPercentage(this.character.energy);
+                    /* console.log('Collision with Character, Energy', this.character.energy); */
                 } 
             });   
         }, 100);
@@ -40,9 +41,10 @@ class World {
         this.drawObjectsIntoMap(this.level.layers);
         this.drawObjectsIntoMap(this.level.clouds);
 
-        this.ctx.translate(-this.cameraX, 0); //back
+        this.ctx.translate(-this.cameraX, 0);
+        //space for fixed objects
         this.drawIntoMap(this.statusBar);
-        this.ctx.translate(this.cameraX, 0); //forward
+        this.ctx.translate(this.cameraX, 0);
 
         this.drawObjectsIntoMap(this.level.items);
         this.drawObjectsIntoMap(this.level.enemies);
