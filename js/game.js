@@ -13,11 +13,11 @@ function init() {
     world = new World(canvas, keyboard);
 
     // Print the character property of the world object to the console
-    console.log('My character is', world.character);
+    /* console.log('My character is', world.character); */
 }
 
 window.addEventListener('keydown', (e) => {
-    /* console.log(e); */
+    console.log(e);
     if (e.code === 'Space'){
         keyboard.space = true;
     } 
@@ -28,6 +28,10 @@ window.addEventListener('keydown', (e) => {
 
     if (e.code === 'ArrowLeft'){
         keyboard.left = true;
+    } 
+
+    if (e.code === 'w'){
+        keyboard.w = true;
     } 
 });
 
@@ -43,5 +47,9 @@ window.addEventListener('keyup', (e) => {
 
     if (e.code === 'ArrowLeft'){
         keyboard.left = false;
+    } 
+
+    if (e.code === 'w'){
+        keyboard.w = true;
     } 
 });
