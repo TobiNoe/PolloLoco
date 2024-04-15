@@ -17,7 +17,7 @@ function init() {
 }
 
 window.addEventListener('keydown', (e) => {
-    console.log(e);
+    /* console.log(e); */
     if (e.code === 'Space'){
         keyboard.space = true;
     } 
@@ -30,7 +30,7 @@ window.addEventListener('keydown', (e) => {
         keyboard.left = true;
     } 
 
-    if (e.code === 'w'){
+    if (e.code === 'KeyW'){
         keyboard.w = true;
     } 
 });
@@ -49,7 +49,7 @@ window.addEventListener('keyup', (e) => {
         keyboard.left = false;
     } 
 
-    if (e.code === 'w'){
-        keyboard.w = true;
+    if (e.code === 'KeyW'){
+        keyboard.w = false;
     } 
 });

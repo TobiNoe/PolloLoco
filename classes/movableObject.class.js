@@ -1,4 +1,4 @@
-class MovableObject extends DrawableObject{
+class MovableObject extends DrawableObject {
     /* x = 100;
     y = 120;
     width = 100;
@@ -25,7 +25,12 @@ class MovableObject extends DrawableObject{
     }
 
     isAboveGround() {
-        return this.y < 178;
+        if (this instanceof ThrowableObject) {
+            return true;
+        } else {
+            return this.y < 178;
+        }
+
     }
 
 
@@ -45,8 +50,8 @@ class MovableObject extends DrawableObject{
     moveRight() {
         if (!this.isDead()) {
             this.x += this.speed;
-            this.otherDirection = false;   
-        } 
+            this.otherDirection = false;
+        }
     }
 
     moveLeft() {
@@ -62,22 +67,22 @@ class MovableObject extends DrawableObject{
     }
 
     jump() {
-        this.speedY = 16;
+        this.speedY = 18;
     }
 
     /* draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     } */
 
-   /*  drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chick || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'green';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    } */
+    /*  drawFrame(ctx) {
+         if (this instanceof Character || this instanceof Chick || this instanceof Chicken) {
+             ctx.beginPath();
+             ctx.lineWidth = '4';
+             ctx.strokeStyle = 'green';
+             ctx.rect(this.x, this.y, this.width, this.height);
+             ctx.stroke();
+         }
+     } */
 
     // Bessere Formel zur Kollisionsberechnung (Genauer)
     isColliding(obj) {
@@ -104,7 +109,7 @@ class MovableObject extends DrawableObject{
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // Difference in ms
         timePassed = timePassed / 1000;
-        return timePassed < 0.5; 
+        return timePassed < 0.5;
     }
 
     isDead() {
