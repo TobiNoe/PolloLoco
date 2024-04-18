@@ -3,7 +3,6 @@ class Character extends MovableObject {
     y = 178;
     width = 100;
     height = 250;
-    /* color = 'red' */
     imagesWalking = [
         './img/2_character_pepe/2_walk/W-21.png',
         './img/2_character_pepe/2_walk/W-22.png',
