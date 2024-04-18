@@ -34,4 +34,14 @@ class DrawableObject {
             ctx.stroke();
         }
     }
+
+    drawFrameRed(ctx) {
+        if (this instanceof CollactableObject) {
+            ctx.beginPath();
+            ctx.lineWidth = '4';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
 }

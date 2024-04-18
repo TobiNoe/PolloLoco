@@ -37,6 +37,13 @@ class World {
                 /* console.log('Collision with Character, Energy', this.character.energy); */
             }
         });
+
+        this.level.items.forEach((item) => {
+            if (this.character.isColliding(item)) {
+                console.log('item collected');
+            }
+
+        });
     }
 
     checkThrowableObject() {
@@ -91,6 +98,7 @@ class World {
 
         //draw rectangle
         obj.drawFrame(this.ctx);
+        obj.drawFrameRed(this.ctx);
 
         /*  otherDirection = false / Taste nach Links wurde nicht gedrückt  */
         if (obj.otherDirection) {
