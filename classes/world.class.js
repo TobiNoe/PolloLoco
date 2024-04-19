@@ -51,6 +51,7 @@ class World {
             console.log('bootle werfen');
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             this.throwableBottles.push(bottle);
+            return;
         }
     }
 
