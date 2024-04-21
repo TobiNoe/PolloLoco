@@ -1,12 +1,13 @@
 class StatusBar extends DrawableObject {
-    y = 5;
+    x = 0;
     width = 200;
     height = 60;
-    images = [
-        './img/7_statusbars/4_bar_elements/statusbar_empty.png'
-    ];
     percentage = 100;
 
+    /**
+     * read index of image and load this image in variable img
+     * @param {number} percentage 
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.images[this.getImageIndex()];

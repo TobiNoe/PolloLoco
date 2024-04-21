@@ -1,4 +1,5 @@
 class HealthyBar extends StatusBar {
+    y = 0;
     images = [
         './img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png',
         './img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png',
@@ -11,7 +12,6 @@ class HealthyBar extends StatusBar {
     constructor() {
         super();
         this.loadImages(this.images);
-        this.setPercentage(100);
-        this.x = 0;
+        this.setPercentage(this.percentage);
     }
 }
