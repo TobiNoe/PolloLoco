@@ -5,7 +5,7 @@ class World {
     ctx;
     keyboard;
     cameraX = 0;
-    statusBar = new StatusBar();
+    statusBar = new HealthyBar();
     throwableBottles = [];
 
     constructor(canvas, keyboard) {
