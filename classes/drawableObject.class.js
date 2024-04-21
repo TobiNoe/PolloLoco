@@ -6,6 +6,17 @@ class DrawableObject {
     img;
     imgCache = {};
     currentImage = 0;
+    
+    /**
+    * Offset of Obj with initial values set to 0.
+    * @type {Offset}
+    */
+    offset = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    };
 
 
     loadImage(path) {
@@ -26,7 +37,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chick || this instanceof Chicken) {
+        if (this instanceof Chick || this instanceof Chicken) {
             ctx.beginPath();
             ctx.lineWidth = '4';
             ctx.strokeStyle = 'green';

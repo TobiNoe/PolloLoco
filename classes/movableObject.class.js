@@ -1,17 +1,21 @@
 class MovableObject extends DrawableObject {
-    /* x = 100;
-    y = 120;
-    width = 100;
-    height = 250;
-    img;
-    imgCache = {}; */
-    /* currentImage = 0; */
     speed;
     otherDirection = false;
     speedY = 0;
     acceleration = 1;
     energy = 100;
     lastHit = 0;
+
+    /**
+    * Offset object with initial values set to 0.
+    * @type {Offset}
+    */
+    offset = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    };
 
 
     //jump() into character
@@ -67,10 +71,10 @@ class MovableObject extends DrawableObject {
     }
 
     playAnimationOnTime(images) {
-       for (let i = 0; i < images.length; i++) {
-        const path = images[i];
-        this.img = this.imgCache[path];
-       }
+        for (let i = 0; i < images.length; i++) {
+            const path = images[i];
+            this.img = this.imgCache[path];
+        }
     }
 
     jump() {
@@ -93,15 +97,15 @@ class MovableObject extends DrawableObject {
 
     // Bessere Formel zur Kollisionsberechnung (Genauer)
     isColliding(obj) {
-        return this.x + this.width > obj.x &&
+        /* return this.x + this.width > obj.x &&
             this.y + this.height > obj.y &&
             this.x < obj.x &&
-            this.y < obj.y + obj.height;
-
-        /*return (this.x + this.width) >= obj.X && this.x <= (obj.X + obj.width) &&
-            (this.y + this.offsetY + this.height) >= obj.Y &&
-            (this.y + this.offsetY) <= (obj.Y + obj.height) &&
-            obj.onCollisionCourse; */
+            this.y < obj.y + obj.height; */
+        // R -> L check collision Charater right side with obj left side
+        // L -> R check collision Charater left side with obj right side side
+        // T -> B check collision Charater ontop with obj
+        // B -> T check collision Charater bottom the obj
+        return this.x + this.width - this.offset.right > obj.x + obj.offset.right && this.x + this.offset.left < obj.x + obj.width - obj.offset.right && this.y + this.height - this.offset.bottom > obj.y + obj.offset.top && this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
     }
 
     hit() {

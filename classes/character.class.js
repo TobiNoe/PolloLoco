@@ -3,6 +3,12 @@ class Character extends MovableObject {
     y = 178;
     width = 100;
     height = 250;
+    offset = {
+        top: 100,
+        bottom: 25,
+        left: 15,
+        right: 25
+    };
     imagesWalking = [
         './img/2_character_pepe/2_walk/W-21.png',
         './img/2_character_pepe/2_walk/W-22.png',
@@ -48,6 +54,14 @@ class Character extends MovableObject {
         this.loadImages(this.imagesHurt);
         this.applyGravity();
         this.animate();
+    }
+
+    drawFrame(ctx) {
+            ctx.beginPath();
+            ctx.lineWidth = '4';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
+            ctx.stroke(); 
     }
 
     animate() {
