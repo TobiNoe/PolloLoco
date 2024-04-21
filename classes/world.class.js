@@ -7,6 +7,7 @@ class World {
     cameraX = 0;
     statusBar = new HealthyBar();
     coinBar = new CoinBar();
+    bottleBar = new BottleBar();
     throwableBottles = [];
 
     constructor(canvas, keyboard) {
@@ -70,6 +71,7 @@ class World {
         //space for fixed objects
         this.drawIntoMap(this.statusBar);
         this.drawIntoMap(this.coinBar);
+        this.drawIntoMap(this.bottleBar);
         this.ctx.translate(this.cameraX, 0);
 
         this.drawObjectsIntoMap(this.level.items);
