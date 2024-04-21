@@ -50,10 +50,8 @@ class ThrowableObject extends MovableObject {
 
         setInterval(() => {
             if (!this.onGround() && this.throwing) {
-                this.playAnimation(this.bottleSplash);
-                setTimeout(() => {
-                   this.throwing = false; 
-                }, 700);
+                this.playAnimationOnTime(this.bottleSplash);
+                this.throwing = false;
             }
         }, 250);
     }
