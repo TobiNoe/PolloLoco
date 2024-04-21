@@ -1,7 +1,11 @@
 class CollactableObject extends DrawableObject {
 
-/* constructor() {
-    super();
-} */
+isCollected() {
+    if (this instanceof Coin) {
+        return 'coin';
+    } else if (this instanceof Bottle) {
+        return 'bottle';
+    }
+}
 
 }

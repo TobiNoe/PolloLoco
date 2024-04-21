@@ -97,15 +97,14 @@ class MovableObject extends DrawableObject {
 
     // Bessere Formel zur Kollisionsberechnung (Genauer)
     isColliding(obj) {
-        /* return this.x + this.width > obj.x &&
-            this.y + this.height > obj.y &&
-            this.x < obj.x &&
-            this.y < obj.y + obj.height; */
         // R -> L check collision Charater right side with obj left side
         // L -> R check collision Charater left side with obj right side side
         // T -> B check collision Charater ontop with obj
         // B -> T check collision Charater bottom the obj
-        return this.x + this.width - this.offset.right > obj.x + obj.offset.right && this.x + this.offset.left < obj.x + obj.width - obj.offset.right && this.y + this.height - this.offset.bottom > obj.y + obj.offset.top && this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
+        return this.x + this.width - this.offset.right > obj.x + obj.offset.right &&
+            this.x + this.offset.left < obj.x + obj.width - obj.offset.right &&
+            this.y + this.height - this.offset.bottom > obj.y + obj.offset.top &&
+            this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
     }
 
     hit() {

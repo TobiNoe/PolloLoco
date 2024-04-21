@@ -8,6 +8,7 @@ class World {
     statusBar = new HealthyBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
+    collactableCoins = [];
     throwableBottles = [];
 
     constructor(canvas, keyboard) {
@@ -41,8 +42,10 @@ class World {
         });
 
         this.level.items.forEach((item) => {
-            if (this.character.isColliding(item)) {
-                console.log('item collected');
+            if (this.character.isColliding(item) && item.isCollected() === 'coin') {
+                console.log('coin collected');
+            } else if (this.character.isColliding(item) && item.isCollected() === 'bottle') {
+                console.log('bottle collected');
             }
 
         });
