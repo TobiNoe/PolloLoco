@@ -1,6 +1,6 @@
 class Character extends MovableObject {
     x = 20;
-    y = 178;
+    y = 175;
     width = 100;
     height = 250;
     offset = {
@@ -9,6 +9,13 @@ class Character extends MovableObject {
         left: 15,
         right: 25
     };
+    offsetJumpOn = {
+        top: 225,
+        bottom: 5,
+        left: 15,
+        right: 25
+    };
+    
     imagesWalking = [
         './img/2_character_pepe/2_walk/W-21.png',
         './img/2_character_pepe/2_walk/W-22.png',
@@ -64,6 +71,14 @@ class Character extends MovableObject {
             ctx.stroke(); 
     }
 
+    drawFrameRed(ctx) {
+        ctx.beginPath();
+        ctx.lineWidth = '4';
+        ctx.strokeStyle = 'red';
+        ctx.rect(this.x + this.offsetJumpOn.left, this.y + this.offsetJumpOn.top, this.width - this.offsetJumpOn.right - this.offsetJumpOn.left, this.height - this.offsetJumpOn.top - this.offsetJumpOn.bottom);
+        ctx.stroke(); 
+}
+
     animate() {
 
         setInterval(() => {
@@ -102,11 +117,5 @@ class Character extends MovableObject {
                 }
             }
         }, 200);
-
-        /*  setInterval(() => {
-             if ((this.world.keyboard.right || this.world.keyboard.left) && !this.isAboveGround()) {
-                 this.playAnimation(this.imagesWalking);
-             }
-         }, 100); */
     }
 }

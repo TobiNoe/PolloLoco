@@ -16,6 +16,12 @@ class MovableObject extends DrawableObject {
         left: 0,
         right: 0
     };
+    offsetJumpOn = {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+    };
 
 
     //jump() into character
@@ -32,7 +38,7 @@ class MovableObject extends DrawableObject {
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 178;
+            return this.y < 173;
         }
 
     }
@@ -95,7 +101,7 @@ class MovableObject extends DrawableObject {
          }
      } */
 
-    // Bessere Formel zur Kollisionsberechnung (Genauer)
+
     isColliding(obj) {
         // R -> L check collision Charater right side with obj left side
         // L -> R check collision Charater left side with obj right side side
@@ -105,6 +111,16 @@ class MovableObject extends DrawableObject {
             this.x + this.offset.left < obj.x + obj.width - obj.offset.right &&
             this.y + this.height - this.offset.bottom > obj.y + obj.offset.top &&
             this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
+    }
+    isJumpOn(obj) {
+        // R -> L check collision Charater right side with obj left side
+        // L -> R check collision Charater left side with obj right side side
+        // T -> B check collision Charater ontop with obj
+        // B -> T check collision Charater bottom the obj
+        return this.x + this.width - this.offsetJumpOn.right > obj.x + obj.offset.right &&
+            this.x + this.offsetJumpOn.left < obj.x + obj.width - obj.offset.right &&
+            this.y + this.height - this.offsetJumpOn.bottom > obj.y + obj.offset.top &&
+            this.y + this.offsetJumpOn.top < obj.y + obj.height - obj.offset.bottom
     }
 
     hit() {

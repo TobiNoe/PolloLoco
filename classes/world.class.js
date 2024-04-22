@@ -19,6 +19,7 @@ class World {
         this.draw();
         this.setWorld();
         this.checkEvents();
+        this.checkThrowing();
     }
 
 
@@ -29,6 +30,13 @@ class World {
     checkEvents() {
         setInterval(() => {
             this.checkCollisions();
+            this.checkJumpOn();
+            this.checkColliding();
+        }, 25);
+    }
+
+    checkThrowing() {
+        setInterval(() => {
             this.checkThrowableObject();
         }, 100);
     }
@@ -41,7 +49,9 @@ class World {
                 /* console.log('Collision with Character, Energy', this.character.energy); */
             }
         });
+    }
 
+    checkColliding() {
         this.level.items.forEach((item) => {
             let index = this.level.items.indexOf(item);
             if (this.character.isColliding(item) && item.isCollectedItem() === 'coin') {
@@ -53,10 +63,20 @@ class World {
                 this.level.items.splice(index, 1);
                 this.collectedBottles += 20;
                 this.bottleBar.setPercentage(this.collectedBottles);
-                console.log('bottle collected', index);
+                /* console.log('bottle collected', index); */
             }
-
         });
+    }
+
+    checkJumpOn() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isJumpOn(enemy) && !this.character.isColliding(enemy)) {
+                this.character.speedY = 18;
+                console.log('jump on head');
+            }
+        });
+
+
     }
 
     checkThrowableObject() {
