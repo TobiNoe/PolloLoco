@@ -8,7 +8,7 @@ class World {
     statusBar = new HealthyBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
-    collactableCoins = [];
+    collectedCoins = 0
     throwableBottles = [];
 
     constructor(canvas, keyboard) {
@@ -42,10 +42,14 @@ class World {
         });
 
         this.level.items.forEach((item) => {
-            if (this.character.isColliding(item) && item.isCollected() === 'coin') {
-                console.log('coin collected');
-            } else if (this.character.isColliding(item) && item.isCollected() === 'bottle') {
-                console.log('bottle collected');
+            let index = this.level.items.indexOf(item);
+            if (this.character.isColliding(item) && item.isCollectedItem() === 'coin') {
+                this.level.items.splice(index, 1);
+                this.collectedCoins += 20;
+                console.log('coin collected', index);
+                this.coinBar.setPercentage(this.collectedCoins);
+            } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle') {
+                console.log('bottle collected', index);
             }
 
         });
