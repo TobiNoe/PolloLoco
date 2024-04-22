@@ -47,7 +47,7 @@ class World {
             if (this.character.isColliding(item) && item.isCollectedItem() === 'coin') {
                 this.level.items.splice(index, 1);
                 this.collectedCoins += 20;
-                console.log('coin collected', index);
+                /* console.log('coin collected', index); */
                 this.coinBar.setPercentage(this.collectedCoins);
             } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle') {
                 this.level.items.splice(index, 1);
