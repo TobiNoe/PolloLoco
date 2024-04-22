@@ -83,6 +83,12 @@ class World {
         if (this.keyboard.w) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             this.throwableBottles.push(bottle);
+            setTimeout(() => {
+                let index = this.throwableBottles.indexOf(bottle);
+                this.throwableBottles.splice(index, 1);
+            }, 1500);
+
+
             // Falsche ggf. wieder löschen.
             //
             //
