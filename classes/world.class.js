@@ -9,6 +9,7 @@ class World {
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     collectedCoins = 0
+    collectedBottles = 0
     throwableBottles = [];
 
     constructor(canvas, keyboard) {
@@ -49,6 +50,9 @@ class World {
                 console.log('coin collected', index);
                 this.coinBar.setPercentage(this.collectedCoins);
             } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle') {
+                this.level.items.splice(index, 1);
+                this.collectedBottles += 20;
+                this.bottleBar.setPercentage(this.collectedBottles);
                 console.log('bottle collected', index);
             }
 
