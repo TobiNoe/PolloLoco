@@ -9,8 +9,4 @@ isCollectedItem() {
     }
 }
 
-isCollected() {
-
-}
-
 }
