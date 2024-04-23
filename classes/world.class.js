@@ -43,7 +43,7 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
                 /* console.log('Collision with Character, Energy', this.character.energy); */
@@ -71,12 +71,10 @@ class World {
     checkJumpOn() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isJumpOn(enemy) && !this.character.isColliding(enemy)) {
-                this.character.speedY = 18;
-                console.log('jump on head');
+                /* this.character.speedY = 18; */
+                enemy.hit();
             }
         });
-
-
     }
 
     checkThrowableObject() {
