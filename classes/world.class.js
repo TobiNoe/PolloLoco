@@ -68,10 +68,12 @@ class World {
         });
     }
 
+    //&& !this.character.isColliding(enemy)    
     checkJumpOn() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isJumpOn(enemy) && !this.character.isColliding(enemy)) {
+            if (this.character.isJumpOn(enemy) && this.character.speedY < 0) {
                 /* this.character.speedY = 18; */
+                console.log(this.character.speedY);
                 enemy.hit();
             }
         });

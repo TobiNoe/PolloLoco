@@ -43,20 +43,6 @@ class MovableObject extends DrawableObject {
 
     }
 
-
-    /* loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imgCache[path] = img;
-        });
-    } */
-
     moveRight() {
         if (!this.isDead()) {
             this.x += this.speed;
@@ -86,21 +72,6 @@ class MovableObject extends DrawableObject {
     jump() {
         this.speedY = 18;
     }
-
-    /* draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    } */
-
-    /*  drawFrame(ctx) {
-         if (this instanceof Character || this instanceof Chick || this instanceof Chicken) {
-             ctx.beginPath();
-             ctx.lineWidth = '4';
-             ctx.strokeStyle = 'green';
-             ctx.rect(this.x, this.y, this.width, this.height);
-             ctx.stroke();
-         }
-     } */
-
 
     isColliding(obj) {
         // R -> L check collision Charater right side with obj left side
