@@ -12,8 +12,8 @@ class Character extends MovableObject {
     offsetJumpOn = {
         top: 225,
         bottom: 5,
-        left: 15,
-        right: 25
+        left: 25,
+        right: 30
     };
     
     imagesWalking = [
