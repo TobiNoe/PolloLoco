@@ -78,7 +78,7 @@ class World {
     }
 
     checkThrowableObject() {
-        if (this.keyboard.w) {
+        if (this.keyboard.w && !this.character.isDead()) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             this.throwableBottles.push(bottle);
             setTimeout(() => {
