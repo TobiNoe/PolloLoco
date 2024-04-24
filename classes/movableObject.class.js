@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 1;
     energy = 100;
     lastHit = 0;
+    ifDeadFalling = true;
 
     /**
     * Offset object with initial values set to 0.
@@ -65,10 +66,22 @@ class MovableObject extends DrawableObject {
     }
 
     playAnimationOnTime(images) {
-        for (let i = 0; i < images.length; i++) {
-            const path = images[i];
+        /*  for (let i = 0; i < images.length; i++) {
+             setTimeout(() => {
+                 const path = images[i];
+                 this.img = this.imgCache[path];
+             }, 1000);
+         } */
+         console.log(this.currentImage);
+         console.log(images.length);
+        if (this.currentImage < images.length) {
+            let i = this.currentImage % images.length;
+            // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
+            let path = images[i];
             this.img = this.imgCache[path];
-        }
+            this.currentImage++;
+            console.log(this.currentImage);
+        } 
     }
 
     jump() {
@@ -113,5 +126,16 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy === 0;
+    }
+
+    isDeadFalling() {
+        setTimeout(() => {
+            setInterval(() => {
+                if (this.ifDeadFalling) {
+                    this.y -= 10;
+                }
+            }, 25);
+
+        }, 2000);
     }
 }

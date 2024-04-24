@@ -15,7 +15,6 @@ class Character extends MovableObject {
         left: 25,
         right: 30
     };
-
     imagesWalking = [
         './img/2_character_pepe/2_walk/W-21.png',
         './img/2_character_pepe/2_walk/W-22.png',
@@ -120,10 +119,10 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                this.playAnimation(this.imagesDead);
+                this.playAnimationOnTime(this.imagesDead);
+                /* this.isDeadFalling();
+                this.ifDeadFalling = false; */
             }
-        }, 1000);
+        }, 200);
     }
-
-
 }
