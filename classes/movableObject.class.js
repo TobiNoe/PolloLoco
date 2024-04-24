@@ -6,11 +6,6 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     ifDeadFalling = true;
-
-    /**
-    * Offset object with initial values set to 0.
-    * @type {Offset}
-    */
     offset = {
         top: 0,
         bottom: 0,
@@ -23,7 +18,13 @@ class MovableObject extends DrawableObject {
         left: 0,
         right: 0
     };
+    intervalIDs = [];
+    i = 1;
 
+    setStoppableInterval(fn, time) {
+        let id = setInterval(fn, time);
+        this.intervalIDs.push(id);
+    }
 
     //jump() into character
     applyGravity() {
@@ -65,7 +66,7 @@ class MovableObject extends DrawableObject {
         this.currentImage++;
     }
 
-    playAnimationOnTime(images) {
+    playAnimationOneTime(images) {
         /*  for (let i = 0; i < images.length; i++) {
              setTimeout(() => {
                  const path = images[i];
