@@ -6,6 +6,7 @@ class DrawableObject {
     img;
     imgCache = {};
     currentImage = 0;
+    resetCurrentImage = true;
     
     /**
     * Offset of Obj with initial values set to 0.

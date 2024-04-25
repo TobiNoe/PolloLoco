@@ -72,22 +72,18 @@ class MovableObject extends DrawableObject {
         this.currentImage++;
     }
 
-    playAnimationOneTime(images) {
-        /*  for (let i = 0; i < images.length; i++) {
-             setTimeout(() => {
-                 const path = images[i];
-                 this.img = this.imgCache[path];
-             }, 1000);
-         } */
-        console.log(this.currentImage);
-        console.log(images.length);
-        if (this.currentImage < images.length) {
+    playAnimationIsDead(images) {
+        if (this.resetCurrentImage) {
+            this.currentImage = 0;
+            this.resetCurrentImage = false;
+        } else if (this.currentImage < images.length) {
             let i = this.currentImage % images.length;
-            // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
             let path = images[i];
             this.img = this.imgCache[path];
             this.currentImage++;
-            console.log(this.currentImage);
+            if (i > 1) {
+                this.y += 30;
+            }
         }
     }
 
