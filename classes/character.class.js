@@ -112,6 +112,8 @@ class Character extends MovableObject {
                 } else {
                     if (this.world.keyboard.right || this.world.keyboard.left) {
                         this.playAnimation(this.imagesWalking);
+                    } else {
+                        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
                     }
                 }
             }
@@ -119,9 +121,7 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                this.playAnimationisDead(this.imagesDead);
-                /* this.isDeadFalling();
-                this.ifDeadFalling = false; */
+                this.playAnimationIsDead(this.imagesDead);
             }
         }, 300);
     }

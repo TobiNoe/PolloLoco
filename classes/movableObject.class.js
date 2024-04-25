@@ -130,15 +130,4 @@ class MovableObject extends DrawableObject {
     isDead() {
         return this.energy === 0;
     }
-
-    isDeadFalling() {
-        setTimeout(() => {
-            setInterval(() => {
-                if (this.ifDeadFalling) {
-                    this.y -= 10;
-                }
-            }, 25);
-
-        }, 2000);
-    }
 }
