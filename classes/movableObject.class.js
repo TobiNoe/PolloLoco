@@ -19,15 +19,21 @@ class MovableObject extends DrawableObject {
         right: 0
     };
     intervalIDs = [];
-    i = 1;
 
     setStoppableInterval(fn, time) {
         let id = setInterval(fn, time);
         this.intervalIDs.push(id);
     }
-
-    //jump() into character
+    /**
+     * Simulates gravity by applying a downward force to the object.
+     */
     applyGravity() {
+        /**
+         * Applies gravity at a fixed interval of 30 frames per second.
+         * The object's Y position and vertical speed are updated accordingly.
+         * If the object is above the ground or has positive vertical speed,
+         * the Y position and speed are adjusted based on the object's acceleration.
+         */
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
@@ -73,8 +79,8 @@ class MovableObject extends DrawableObject {
                  this.img = this.imgCache[path];
              }, 1000);
          } */
-         console.log(this.currentImage);
-         console.log(images.length);
+        console.log(this.currentImage);
+        console.log(images.length);
         if (this.currentImage < images.length) {
             let i = this.currentImage % images.length;
             // Modulo Operation speichert immer den rest 0,1,2,3,4,5,0,1....
@@ -82,7 +88,7 @@ class MovableObject extends DrawableObject {
             this.img = this.imgCache[path];
             this.currentImage++;
             console.log(this.currentImage);
-        } 
+        }
     }
 
     jump() {
