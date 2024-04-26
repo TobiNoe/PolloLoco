@@ -3,9 +3,9 @@ class Endboss extends MovableObject {
     height = 300;
     width = 300;
     offset = {
-        top: 40,
+        top: 45,
         bottom: 0,
-        left: 0,
+        left: 15,
         right: 0
     };
     imagesWalking = [
