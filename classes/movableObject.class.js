@@ -2,7 +2,7 @@ class MovableObject extends DrawableObject {
     speed;
     otherDirection = false;
     speedY = 0;
-    acceleration = 1;
+    acceleration = 1.5;
     energy = 100;
     lastHit = 0;
     /* ifDeadFalling = true; */
@@ -18,6 +18,8 @@ class MovableObject extends DrawableObject {
         left: 0,
         right: 0
     };
+    isJump = false;
+    noMove = false;
     
     /**
      * Simulates gravity by applying a downward force to the object.
@@ -82,8 +84,34 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    playAnimationJump(images) {
+        if (this.resetCurrentImage) {
+            this.currentImage = 0;
+            this.resetCurrentImage = false;
+            this.noMove = true;
+        } else if (this.currentImage < images.length) {
+            let i = this.currentImage % images.length;
+            let path = images[i];
+            this.img = this.imgCache[path];
+            this.currentImage++;
+            if (i === 3) {
+                this.speedY = 18;
+                this.noMove =  false;
+            } else if (i === 8) {
+                this.noMove = true;
+            }
+        } else if (this.currentImage = images.length) {
+            this.isJump = false;
+            this.noMove =  false;
+            this.resetCurrentImage = true;
+            console.log(this.currentImage);
+            console.log(this.resetCurrentImage);
+            console.log(this.isJump);
+        }
+    }
+
     jump() {
-        this.speedY = 18;
+        this.isJump = true;
     }
 
     isColliding(obj) {

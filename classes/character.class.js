@@ -106,12 +106,12 @@ class Character extends MovableObject {
 
         setInterval(() => {
             this.walkingSound.pause();
-            if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
+            if (this.world.keyboard.right && this.x < this.world.level.levelEndX && !this.noMove) {
                 this.moveRight();
                 /* this.walkingSound.play(); */
             }
 
-            if (this.world.keyboard.left && this.x > -250 && !this.isDead()) {
+            if (this.world.keyboard.left && this.x > -250 && !this.isDead() && !this.noMove) {
                 this.moveLeft();
                 this.otherDirection = true;
                 /* this.walkingSound.play(); */
@@ -131,19 +131,27 @@ class Character extends MovableObject {
             if (!this.isDead()) {
                 if (this.isHurt()) {
                     this.playAnimation(this.imagesHurt);
-                } else if (this.isAboveGround()) {
-                    this.playAnimation(this.imagesJumping);
+                } else if (this.isJump) {
+                    this.playAnimationJump(this.imagesJumping);
                 } else {
-                    if (this.world.keyboard.right || this.world.keyboard.left) {
+                    if ((this.world.keyboard.right || this.world.keyboard.left) && !this.isAboveGround() && !this.isJump) {
                         this.playAnimation(this.imagesWalking);
                     } else if (this.isIdle) {
                         this.playAnimation(this.imagesIdle);
-                    } else {
-                        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');   
-                    }
+                    } /* else {
+                        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
+                    } */ 
                 }
             }
         }, 200);
+
+        /* setInterval(() => {
+            if (!this.isDead()) {
+                if (this.isJump) {
+                    this.playAnimationJump(this.imagesJumping);
+                }
+            }
+        }, 200); */
 
         setInterval(() => {
             if (this.isDead()) {
