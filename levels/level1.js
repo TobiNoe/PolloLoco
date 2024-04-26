@@ -26,13 +26,13 @@ const level1 = new Level(
     ],
     //Enemies
     [
-       /*  new Chicken(),
-        new Chick(),
         new Chicken(),
         new Chick(),
         new Chicken(),
         new Chick(),
-        new Endboss() */
+        new Chicken(),
+        new Chick(),
+        new Endboss()
     ],
     //Clouds
     [
