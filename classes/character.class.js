@@ -58,7 +58,9 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/idle/I-7.png',
         './img/2_character_pepe/1_idle/idle/I-8.png',
         './img/2_character_pepe/1_idle/idle/I-9.png',
-        './img/2_character_pepe/1_idle/idle/I-10.png',
+        './img/2_character_pepe/1_idle/idle/I-10.png'
+    ];
+    imagesSleep = [
         './img/2_character_pepe/1_idle/long_idle/I-11.png',
         './img/2_character_pepe/1_idle/long_idle/I-12.png',
         './img/2_character_pepe/1_idle/long_idle/I-13.png',
@@ -69,7 +71,7 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/long_idle/I-18.png',
         './img/2_character_pepe/1_idle/long_idle/I-19.png',
         './img/2_character_pepe/1_idle/long_idle/I-20.png'
-    ];
+    ]
     isIdle = false;
     world;
     speed = 1; // speed default 1
@@ -136,11 +138,9 @@ class Character extends MovableObject {
                 } else {
                     if ((this.world.keyboard.right || this.world.keyboard.left) && !this.isAboveGround() && !this.isJump) {
                         this.playAnimation(this.imagesWalking);
-                    } else if (this.isIdle) {
+                    } else {
                         this.playAnimation(this.imagesIdle);
-                    } /* else {
-                        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
-                    } */ 
+                    } 
                 }
             }
         }, 200);
