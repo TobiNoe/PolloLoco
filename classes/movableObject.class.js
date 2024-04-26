@@ -20,7 +20,7 @@ class MovableObject extends DrawableObject {
     };
     isJump = false;
     noMove = false;
-    
+
     /**
      * Simulates gravity by applying a downward force to the object.
      */
@@ -95,14 +95,14 @@ class MovableObject extends DrawableObject {
             this.img = this.imgCache[path];
             this.currentImage++;
             if (i === 3) {
-                this.speedY = 18;
-                this.noMove =  false;
+                this.speedY = 20;
+                this.noMove = false;
             } else if (i === 8) {
                 this.noMove = true;
             }
         } else if (this.currentImage = images.length) {
             this.isJump = false;
-            this.noMove =  false;
+            this.noMove = false;
             this.resetCurrentImage = true;
             console.log(this.currentImage);
             console.log(this.resetCurrentImage);
@@ -136,7 +136,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        this.energy -= 2;
+        this.energy -= 0.5;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
