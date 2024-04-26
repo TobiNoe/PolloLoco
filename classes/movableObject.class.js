@@ -18,12 +18,7 @@ class MovableObject extends DrawableObject {
         left: 0,
         right: 0
     };
-    intervalIDs = [];
-
-    setStoppableInterval(fn, time) {
-        let id = setInterval(fn, time);
-        this.intervalIDs.push(id);
-    }
+    
     /**
      * Simulates gravity by applying a downward force to the object.
      */

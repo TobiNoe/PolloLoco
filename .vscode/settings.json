@@ -1,3 +1,16 @@
 {
-    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+    "CodeGPT.apiKey": "CodeGPT Plus Beta",
+    "indentRainbow.ignoreLinePatterns": [
+        "/[ \t]* [*]/g",
+        "/[ \t]+[/]{2}/g"
+    ],
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.lightIndicatorStyleLineWidth": 3,
+    "indentRainbow.colors": [
+
+        "rgba(255,255,64,0.7)",
+        "rgba(127,255,127,0.7)",
+        "rgba(255,127,255,0.7)",
+        "rgba(79,236,236,0.7)"
+    ]
 }
