@@ -5,7 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 1;
     energy = 100;
     lastHit = 0;
-    ifDeadFalling = true;
+    /* ifDeadFalling = true; */
     offset = {
         top: 0,
         bottom: 0,

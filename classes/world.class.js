@@ -8,9 +8,10 @@ class World {
     statusBar = new HealthyBar();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
-    collectedCoins = 0
-    collectedBottles = 0
+    collectedCoins = 0;
+    collectedBottles = 0;
     throwableBottles = [];
+    throwingBottle = true;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -38,6 +39,7 @@ class World {
     checkThrowing() {
         setInterval(() => {
             this.checkThrowableObject();
+            this.checkSplashedBottles();
         }, 100);
     }
 
@@ -78,19 +80,21 @@ class World {
     }
 
     checkThrowableObject() {
-        if (this.keyboard.w && !this.character.isDead()) {
+        if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             this.throwableBottles.push(bottle);
-            setTimeout(() => {
-                let index = this.throwableBottles.indexOf(bottle);
-                this.throwableBottles.splice(index, 1);
-            }, 1500);
-
-
-            // Falsche ggf. wieder löschen.
-            //
-            //
+            this.collectedBottles -= 20;
+            this.bottleBar.setPercentage(this.collectedBottles);
         }
+    }
+
+    checkSplashedBottles() {
+        this.throwableBottles.forEach((bottle) => {
+            let index = this.throwableBottles.indexOf(bottle);
+            if (!this.throwableBottles[index].throwing) {   
+                this.throwableBottles.splice(index, 1);
+            }
+        });
     }
 
     //wird so oft ausgeführt, wie es die Leistung der Grafikkarte her gibt
