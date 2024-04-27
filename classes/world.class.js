@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    endboss = new Endboss();
     level = level1;
     canvas;
     ctx;
@@ -46,11 +47,7 @@ class World {
 
     checkEndboss() {
         if (this.character.x > 2200) { 
-            this.level.enemies.forEach((enemy) => {
-                if (enemy instanceof Endboss) {
-                    enemy.speed = 0.5;   
-                }    
-            });
+            this.endboss.speed = 0.5;
         }
     }
 
@@ -59,7 +56,6 @@ class World {
             if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit();
                 this.statusBar.setPercentage(this.character.energy);
-                /* console.log('Collision with Character, Energy', this.character.energy); */
             }
         });
     }
@@ -129,6 +125,7 @@ class World {
         this.drawObjectsIntoMap(this.throwableBottles);
 
         this.drawIntoMap(this.character);
+        this.drawIntoMap(this.endboss);
 
         this.ctx.translate(-this.cameraX, 0);
 
