@@ -127,14 +127,14 @@ class Character extends MovableObject {
             if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump) {
 
                 setTimeout(() => {
-                    console.log('Character is Idle')
+                    /* console.log('Character is Idle') */
                     this.characterIdle = true;
                 }, 1000);
             }
 
             if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump && this.isIdle()) {
                 setTimeout(() => {
-                    console.log('Character is Sleeping')
+                    /* console.log('Character is Sleeping') */
                     this.characterSleeping = true;
                 }, 3000);
             }
