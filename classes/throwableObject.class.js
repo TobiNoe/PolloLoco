@@ -32,7 +32,7 @@ class ThrowableObject extends MovableObject {
         this.speedY = 10;
         this.applyGravity();
         setInterval(() => {
-            if (this.onGround()) {
+            if (this.notOnGround()) {
                 this.x += 5;
             } else {
                 this.y = 360;
@@ -43,16 +43,16 @@ class ThrowableObject extends MovableObject {
 
     animation() {
         setInterval(() => {
-            if (this.onGround()) {
+            if (this.notOnGround()) {
                 this.playAnimation(this.bottleRotation);
-            } else if (!this.onGround()) {
+            } else if (!this.notOnGround()) {
                 this.playAnimationIsBroken(this.bottleSplash);
             }
 
         }, 100);
     }
 
-    onGround() {
+    notOnGround() {
         return this.y < 360;
     }
 
