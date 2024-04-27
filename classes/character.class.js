@@ -72,7 +72,6 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/long_idle/I-19.png',
         './img/2_character_pepe/1_idle/long_idle/I-20.png'
     ]
-    isIdle = false;
     world;
     speed = 1; // speed default 1
     walkingSound = new Audio('../audio/walking.mp3');
@@ -80,6 +79,7 @@ class Character extends MovableObject {
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.imagesIdle);
+        this.loadImages(this.imagesSleep);
         this.loadImages(this.imagesWalking);
         this.loadImages(this.imagesJumping);
         this.loadImages(this.imagesDead);
@@ -124,6 +124,21 @@ class Character extends MovableObject {
                 this.jump();
             }
 
+            if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump) {
+
+                setTimeout(() => {
+                    console.log('Character is Idle')
+                    this.characterIdle = true;
+                }, 1000);
+            }
+
+            if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump && this.isIdle()) {
+                setTimeout(() => {
+                    console.log('Character is Sleeping')
+                    this.characterSleeping = true;
+                }, 3000);
+            }
+
             //Layer move with Character
             this.world.cameraX = -this.x + 50;
 
@@ -137,10 +152,16 @@ class Character extends MovableObject {
                     this.playAnimationJump(this.imagesJumping);
                 } else {
                     if ((this.world.keyboard.right || this.world.keyboard.left) && !this.isAboveGround() && !this.isJump) {
+                        this.characterIdle = false;
+                        this.characterSleeping = false;
                         this.playAnimation(this.imagesWalking);
-                    } else {
-                        this.playAnimation(this.imagesIdle);
-                    } 
+                    } else if (this.isIdle()) {
+                        if (this.isIdle && !this.isSlepping) {
+                            this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
+                        } else if (this.isIdle && this.isSlepping) {
+                            this.playAnimation(this.imagesSleep);
+                        }
+                    }
                 }
             }
         }, 200);

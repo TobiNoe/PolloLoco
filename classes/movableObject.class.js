@@ -20,6 +20,8 @@ class MovableObject extends DrawableObject {
     };
     isJump = false;
     noMove = false;
+    characterIdle = false;
+    characterSleeping = false;
 
     /**
      * Simulates gravity by applying a downward force to the object.
@@ -112,6 +114,14 @@ class MovableObject extends DrawableObject {
 
     jump() {
         this.isJump = true;
+    }
+
+    isIdle() {
+        return this.characterIdle === true;
+    }
+
+    isSlepping() {
+        return this.characterSleeping === true;
     }
 
     isColliding(obj) {
