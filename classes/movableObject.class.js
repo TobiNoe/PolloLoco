@@ -5,7 +5,6 @@ class MovableObject extends DrawableObject {
     acceleration = 1.5;
     energy = 100;
     lastHit = 0;
-    /* ifDeadFalling = true; */
     offset = {
         top: 0,
         bottom: 0,
@@ -20,8 +19,6 @@ class MovableObject extends DrawableObject {
     };
     isJump = false;
     noMove = false;
-    characterIdle = false;
-    characterSleeping = false;
 
     /**
      * Simulates gravity by applying a downward force to the object.
@@ -114,14 +111,6 @@ class MovableObject extends DrawableObject {
 
     jump() {
         this.isJump = true;
-    }
-
-    isIdle() {
-        return this.characterIdle === true;
-    }
-
-    isSlepping() {
-        return this.characterSleeping === true;
     }
 
     isColliding(obj) {

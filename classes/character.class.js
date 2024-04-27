@@ -74,6 +74,7 @@ class Character extends MovableObject {
     ]
     world;
     speed = 1; // speed default 1
+    sleepTimer = 0;
     walkingSound = new Audio('../audio/walking.mp3');
 
     constructor() {
@@ -107,36 +108,25 @@ class Character extends MovableObject {
     animate() {
 
         setInterval(() => {
+            this.sleepTimer++;
             this.walkingSound.pause();
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX && !this.noMove) {
                 this.moveRight();
+                this.sleepTimer = 0;
                 /* this.walkingSound.play(); */
             }
 
             if (this.world.keyboard.left && this.x > -250 && !this.isDead() && !this.noMove) {
                 this.moveLeft();
                 this.otherDirection = true;
+                this.sleepTimer = 0;
                 /* this.walkingSound.play(); */
 
             }
 
             if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
-            }
-
-            if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump) {
-
-                setTimeout(() => {
-                    /* console.log('Character is Idle') */
-                    this.characterIdle = true;
-                }, 1000);
-            }
-
-            if (!this.world.keyboard.space && !this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.w && !this.isHurt() && !this.isDead() && !this.isJump && this.isIdle()) {
-                setTimeout(() => {
-                    /* console.log('Character is Sleeping') */
-                    this.characterSleeping = true;
-                }, 3000);
+                this.sleepTimer = 0;
             }
 
             //Layer move with Character
@@ -155,12 +145,14 @@ class Character extends MovableObject {
                         this.characterIdle = false;
                         this.characterSleeping = false;
                         this.playAnimation(this.imagesWalking);
-                    } else if (this.isIdle()) {
-                        if (this.isIdle && !this.isSlepping) {
-                            this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
-                        } else if (this.isIdle && this.isSlepping) {
+                    } else if (this.sleepTimer > 100) {
+                        if (this.sleepTimer > 100 && this.sleepTimer <= 200) {
+                            this.playAnimation(this.imagesIdle);
+                        } else if (this.sleepTimer > 200) {
                             this.playAnimation(this.imagesSleep);
                         }
+                    } else {
+                        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
                     }
                 }
             }
