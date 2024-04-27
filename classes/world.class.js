@@ -34,9 +34,9 @@ class World {
      */
     checkEvents() {
         setInterval(() => {
-            this.checkCollisions();
+            this.checkCollisionEnemys();
             this.checkJumpOn();
-            this.checkColliding();
+            this.checkCollisionCollectableItems();
             this.checkEndboss();
         }, 25);
     }
@@ -54,7 +54,7 @@ class World {
         }
     }
 
-    checkCollisions() {
+    checkCollisionEnemys() {
         this.level.enemies.forEach((enemy) => {
             if ((this.character.isColliding(enemy) && !enemy.isDead()) || this.character.isColliding(this.endboss)) {
                 this.character.hit();
@@ -63,8 +63,7 @@ class World {
         });
     }
 
-    //anderen Namen vergeben
-    checkColliding() {
+    checkCollisionCollectableItems() {
         this.level.items.forEach((item) => {
             let index = this.level.items.indexOf(item);
             if (this.character.isColliding(item) && item.isCollectedItem() === 'coin') {
