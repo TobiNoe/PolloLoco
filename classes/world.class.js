@@ -29,6 +29,9 @@ class World {
         this.character.world = this;
     }
 
+    /**
+     * check possible Events and call the checkFunctions for possibilities
+     */
     checkEvents() {
         setInterval(() => {
             this.checkCollisions();
@@ -60,6 +63,7 @@ class World {
         });
     }
 
+    //anderen Namen vergeben
     checkColliding() {
         this.level.items.forEach((item) => {
             let index = this.level.items.indexOf(item);
@@ -90,11 +94,11 @@ class World {
         if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             this.throwableBottles.push(bottle);
-            /* this.collectedBottles -= 20; */
+            this.collectedBottles -= 20;
             this.bottleBar.setPercentage(this.collectedBottles);
         }
     }
-
+    //check on top if enboss is collided    
     checkSplashedBottles() {
         this.throwableBottles.forEach((bottle) => {
             let index = this.throwableBottles.indexOf(bottle);
