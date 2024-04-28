@@ -6,12 +6,12 @@ class World {
     keyboard;
     cameraX = 0;
     statusBar = new HealthyBar();
+    statusBarEndboss = new HealthyBarEndboss();
     coinBar = new CoinBar();
     bottleBar = new BottleBar();
     collectedCoins = 0;
     collectedBottles = 0;
     throwableBottles = [];
-    /* throwingBottle = true; */
     endboss = new Endboss();
 
     constructor(canvas, keyboard) {
@@ -76,6 +76,7 @@ class World {
         this.throwableBottles.forEach(bottle => {
             if (bottle.isColliding(this.endboss)) {
                 this.endboss.hit();
+                this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.isBroken = true;
                 console.log('Endboss energy', this.endboss.energy);
             }
@@ -145,6 +146,7 @@ class World {
         this.ctx.translate(-this.cameraX, 0);
         //space for fixed objects
         this.drawIntoMap(this.statusBar);
+        this.drawIntoMap(this.statusBarEndboss);
         this.drawIntoMap(this.coinBar);
         this.drawIntoMap(this.bottleBar);
         this.ctx.translate(this.cameraX, 0);

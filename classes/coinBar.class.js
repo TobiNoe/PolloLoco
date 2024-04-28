@@ -1,6 +1,7 @@
 class CoinBar extends StatusBar {
     percentage = 0;
-    y = 40;
+    y = 90;
+    height = 55;
     images = [
         './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/0.png',
         './img/7_statusbars/1_statusbar/1_statusbar_coin/orange/20.png',
