@@ -44,6 +44,8 @@ class Endboss extends MovableObject {
         './img/4_enemie_boss_chicken/3_attack/G19.png',
         './img/4_enemie_boss_chicken/3_attack/G20.png'
     ];
+    isAlert = false;
+    isAttack = false;
 
     constructor() {
         super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');
@@ -72,9 +74,17 @@ class Endboss extends MovableObject {
             if (!this.isDead()) {
                 if (this.isHurt()) {
                     this.playAnimation(this.imagesHurt);
-                    console.log('hurt');
                 } else {
-                    this.playAnimation(this.imagesWalking);
+                    if (this.speed > 0 && !this.isAttack) {
+                        this.playAnimation(this.imagesWalking);   
+                    } else if (this.speed > 0 && this.isAttack) {
+                        this.playAnimation(this.imagesAttack);
+                    } else if (this.speed === 0 && this.isAlert) {
+                        this.playAnimation(this.imagesAlert);
+                    } else {
+                        this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
+                    }
+                    
                 }
             }
         }, 200);

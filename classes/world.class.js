@@ -37,8 +37,11 @@ class World {
             this.checkCollisionEnemys();
             this.checkJumpOn();
             this.checkCollisionCollectableItems();
-            this.checkEndboss();
+            this.checkEndbossAlert();
+            this.checkEndbossAttack();
+            this.checkEndbossStartWalking();
             this.checkCollisionEndboss();
+
         }, 25);
     }
 
@@ -49,9 +52,23 @@ class World {
         }, 100);
     }
 
-    checkEndboss() {
+    checkEndbossStartWalking() {
         if (this.character.x > 2200) { 
             this.endboss.speed = 0.5;
+        }
+    }
+
+    checkEndbossAlert() {
+        if (this.character.x > 2100) { 
+            this.endboss.isAlert = true;
+        }  
+    }
+
+    checkEndbossAttack() {
+        if (this.endboss.x - this.character.x < 200) {
+            this.endboss.isAttack = true;
+        } else {
+            this.endboss.isAttack = false;
         }
     }
 

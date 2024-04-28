@@ -145,10 +145,10 @@ class Character extends MovableObject {
                         this.characterIdle = false;
                         this.characterSleeping = false;
                         this.playAnimation(this.imagesWalking);
-                    } else if (this.sleepTimer > 100) {
-                        if (this.sleepTimer > 100 && this.sleepTimer <= 200) {
+                    } else if (this.sleepTimer > 200) {
+                        if (this.sleepTimer > 200 && this.sleepTimer <= 300) {
                             this.playAnimation(this.imagesIdle);
-                        } else if (this.sleepTimer > 200) {
+                        } else if (this.sleepTimer > 300) {
                             this.playAnimation(this.imagesSleep);
                         }
                     } else {
