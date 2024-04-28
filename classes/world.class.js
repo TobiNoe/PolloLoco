@@ -41,7 +41,7 @@ class World {
             this.checkEndbossAttack();
             this.checkEndbossStartWalking();
             this.checkCollisionEndboss();
-
+            /* console.log('character sleepTimer:', this.character.sleepTimer); */
         }, 25);
     }
 
@@ -119,6 +119,7 @@ class World {
     checkThrowableObject() {
         if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
+            this.character.sleepTimer = 0;
             this.throwableBottles.push(bottle);
             this.collectedBottles -= 20;
             this.bottleBar.setPercentage(this.collectedBottles);
