@@ -103,9 +103,6 @@ class MovableObject extends DrawableObject {
             this.isJump = false;
             this.noMove = false;
             this.resetCurrentImage = true;
-            /*  console.log(this.currentImage);
-             console.log(this.resetCurrentImage);
-             console.log(this.isJump); */
         }
     }
 

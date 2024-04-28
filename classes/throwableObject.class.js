@@ -15,6 +15,7 @@ class ThrowableObject extends MovableObject {
         './img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
         './img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
     ];
+    isBroken = false;
 
     constructor(x, y) {
         super().loadImage('./img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
@@ -43,9 +44,9 @@ class ThrowableObject extends MovableObject {
 
     animation() {
         setInterval(() => {
-            if (this.notOnGround()) {
+            if (this.notOnGround() && !this.isBroken) {
                 this.playAnimation(this.bottleRotation);
-            } else if (!this.notOnGround()) {
+            } else if (!this.notOnGround() || this.isBroken) {
                 this.playAnimationIsBroken(this.bottleSplash);
             }
 

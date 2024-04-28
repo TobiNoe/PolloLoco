@@ -1,6 +1,5 @@
 class World {
     character = new Character();
-    endboss = new Endboss();
     level = level1;
     canvas;
     ctx;
@@ -12,7 +11,8 @@ class World {
     collectedCoins = 0;
     collectedBottles = 0;
     throwableBottles = [];
-    throwingBottle = true;
+    /* throwingBottle = true; */
+    endboss = new Endboss();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -76,6 +76,7 @@ class World {
         this.throwableBottles.forEach(bottle => {
             if (bottle.isColliding(this.endboss)) {
                 this.endboss.hit();
+                bottle.isBroken = true;
                 console.log('Endboss energy', this.endboss.energy);
             }
         });
