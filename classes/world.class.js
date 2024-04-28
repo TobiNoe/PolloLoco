@@ -38,6 +38,7 @@ class World {
             this.checkJumpOn();
             this.checkCollisionCollectableItems();
             this.checkEndboss();
+            this.checkCollisionEndboss();
         }, 25);
     }
 
@@ -52,6 +53,15 @@ class World {
         if (this.character.x > 2200) { 
             this.endboss.speed = 0.5;
         }
+    }
+
+    checkCollisionEndboss () {
+        this.throwableBottles.forEach(bottle => {
+            if (bottle.isColliding(this.endboss)) {
+                this.endboss.hit();
+                console.log('Endboss energy', this.endboss.energy);
+            }
+        });
     }
 
     checkCollisionEnemys() {
