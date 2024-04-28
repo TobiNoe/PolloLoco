@@ -1,4 +1,4 @@
-class CollactableObject extends DrawableObject {
+class CollactableObject extends MovableObject {
 
 
 isCollectedItem() {
