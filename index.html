@@ -7,13 +7,13 @@
     <title>ElPolloLocco</title>
     <link rel="stylesheet" href="style.css">
     <script src="./js/control.js"></script>
-    
+
     <script src="./classes/drawableObject.class.js"></script>
     <script src="./classes/movableObject.class.js"></script>
     <script src="./classes/collactableObject.class.js"></script>
     <script src="./classes/throwableObject.class.js"></script>
     <script src="./classes/layerObject.class.js"></script>
-    
+
     <script src="./classes/keyboard.class.js"></script>
     <script src="./classes/character.class.js"></script>
     <script src="./classes/chicken.class.js"></script>
@@ -27,9 +27,9 @@
     <script src="./classes/healthyBarEndboss.class.js"></script>
     <script src="./classes/coinBar.class.js"></script>
     <script src="./classes/bottleBar.class.js"></script>
-    
+
     <script src="./classes/world.class.js"></script>
-    
+
     <script src="./classes/level.class.js"></script>
     <script src="./levels/level1.js"></script>
     <script src="./js/game.js"></script>
@@ -39,14 +39,14 @@
 
     <div class="main">
         <div id="startscreen" class="start-screen d-flex">
-            <!-- <img src="./img/9_intro_outro_screens/start/startscreen_1.png" alt=""> -->
             <button onclick="init()">Start Game</button>
         </div>
-
-        <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
-        
+        <div id="game" class="game d-none">
+            <canvas id="canvas" width="720" height="480"></canvas>
+            <div id="overlay" class="overlay"></div>
+        </div>
     </div>
-    
+
 
 </body>
 
