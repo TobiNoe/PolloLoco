@@ -126,7 +126,7 @@ class Character extends MovableObject {
 
             if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
-                this.sleepTimer = 0;
+                this.sleepTimer = -100;
             }
 
             //Layer move with Character

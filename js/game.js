@@ -19,6 +19,8 @@ function init() {
     /* console.log('My character is', world.character); */
 }
 
+
+
 window.addEventListener('keydown', (e) => {
     /* console.log(e); */
     if (e.code === 'Space'){
