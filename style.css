@@ -11,7 +11,22 @@ body {
     object-fit: cover;
     backdrop-filter: blur(10px);
     height: 100vh;
-    
+}
+
+canvas {
+    background: black;
+    border: solid thin black;
+}
+
+button {
+    cursor: pointer;
+    width: 150px;
+    height: 70px;
+    position: relative;
+}
+
+.d-none {
+    display: none;
 }
 
 .main {
@@ -21,7 +36,15 @@ body {
     gap: 16px;
 }
 
-canvas {
-    background: black;
-    border: solid thin black;
+.start-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 896px;
+    height: auto;
+    min-height: 414px;
+    width: auto;
+    background-image: URL('./img/9_intro_outro_screens/start/startscreen_1.png');
+    background-size: cover;
+    background-position: 50% 60%;
 }
