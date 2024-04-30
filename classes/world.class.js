@@ -78,7 +78,7 @@ class World {
                 this.endboss.hit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.isBroken = true;
-                console.log('Endboss energy', this.endboss.energy);
+                /* console.log('Endboss energy', this.endboss.energy); */
             }
         });
     }
@@ -154,10 +154,11 @@ class World {
 
         this.drawObjectsIntoMap(this.level.items);
         this.drawObjectsIntoMap(this.level.enemies);
+        this.drawIntoMap(this.endboss);
         this.drawObjectsIntoMap(this.throwableBottles);
 
         this.drawIntoMap(this.character);
-        this.drawIntoMap(this.endboss);
+        
 
         this.ctx.translate(-this.cameraX, 0);
 
