@@ -37,7 +37,7 @@ canvas {
     display: block;
 }
 
-button {
+.start-button {
     margin-top: 15px;
     height: 70px;
     position: relative;
@@ -58,11 +58,34 @@ button {
     align-items: center;
 }
 
-button:hover {
+.start-button:hover {
     background-color: #ffab00;
     color: black;
     border-color: #F4DC00;
     cursor: pointer;
+}
+
+.panel {
+    display: flex;
+    width: 100%;
+}
+
+.btn-nav {
+    fill: #bf0000;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    background-color: rgba(255, 171, 0, 0.5);
+    border-radius: 15px;
+    border-color: #bf0000;
+}
+
+.btn-nav img {
+    width: 52px;
+    height: 62px;
 }
 
 .d-none {
@@ -71,6 +94,10 @@ button:hover {
 
 .d-flex {
     display: flex;
+}
+
+.space-around {
+    justify-content: space-around;
 }
 
 .main {
@@ -97,11 +124,13 @@ button:hover {
 
 .overlay {
     position: absolute;
-    opacity: 0.1;
-    background-color: #ffffff;
+    /* opacity: 0.1; */
+    background-color: rgba(255, 255, 255, 0.1);
     height: 480px;
     width: 720px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 3;
 }
 

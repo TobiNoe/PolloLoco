@@ -39,11 +39,38 @@
 
     <div class="main">
         <div id="startscreen" class="start-screen d-flex">
-            <button onclick="init()">Start Game</button>
+            <button class="start-button" onclick="init()">Start Game</button>
         </div>
         <div id="game" class="game d-none">
             <canvas id="canvas" width="720" height="480"></canvas>
-            <div id="overlay" class="overlay"></div>
+            <div id="overlay" class="overlay">
+                <div class="panel"></div>
+                <div class="panel space-around">
+                    <div class="d-flex">
+                        <button class="btn-nav">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
+                            </svg>
+                        </button>
+                        <button class="btn-nav">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="d-flex">
+                        <button class="btn-nav">
+                            <img src="./img/6_salsa_bottle/salsa_bottle.png" alt="">
+                        </button>
+                        <button class="btn-nav">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path
+                                    d="M320-160q-117 0-198.5-81.5T40-440q0-107 70.5-186.5T287-718l-63-66 56-56 160 160-160 160-56-57 59-59q-71 14-117 69t-46 127q0 83 58.5 141.5T320-240h120v80H320Zm200-360v-280h360v280H520Zm0 360v-280h360v280H520Zm80-80h200v-120H600v120Z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
