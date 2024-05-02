@@ -33,7 +33,7 @@ class World {
      * check possible Events and call the checkFunctions for possibilities
      */
     checkEvents() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.checkCollisionEnemys();
             this.checkJumpOn();
             this.checkCollisionCollectableItems();
@@ -46,7 +46,7 @@ class World {
     }
 
     checkThrowing() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.checkThrowableObject();
             this.checkSplashedBottles();
         }, 100);

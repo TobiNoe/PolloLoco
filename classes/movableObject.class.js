@@ -30,7 +30,7 @@ class MovableObject extends DrawableObject {
          * If the object is above the ground or has positive vertical speed,
          * the Y position and speed are adjusted based on the object's acceleration.
          */
-        setInterval(() => {
+        setStoppableInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
