@@ -75,6 +75,7 @@ class Character extends MovableObject {
     world;
     speed = 1; // speed default 1
     sleepTimer = 0;
+    timerEndScreen = 0;
     walkingSound = new Audio('../audio/walking.mp3');
 
     constructor() {
@@ -168,7 +169,13 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                this.playAnimationIsDead(this.imagesDead);
+                if (this.timerEndScreen < 10) {
+                    this.timerEndScreen++;
+                    console.log(this.timerEndScreen);
+                    this.playAnimationIsDead(this.imagesDead);  
+                } else {
+                    showGameResultLost();
+                }
             }
         }, 300);
     }
