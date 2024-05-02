@@ -24,10 +24,7 @@ function init() {
 function showGameResultLost() {
     document.getElementById('gameResult').classList.toggle('d-flex');
     document.getElementById('gameResult').classList.toggle('d-none');
-    //stop all intervall
 }
-
-
 
 window.addEventListener('keydown', (e) => {
     /* console.log(e); */

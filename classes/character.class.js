@@ -166,6 +166,7 @@ class Character extends MovableObject {
                     console.log(this.timerEndScreen);
                     this.playAnimationIsDead(this.imagesDead);  
                 } else {
+                    stopGame();
                     showGameResultLost();
                 }
             }
