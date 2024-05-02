@@ -30,7 +30,7 @@ class Coin extends CollactableObject {
     }
 
     animate() {
-        setInterval(() => {
+        setStoppableInterval(() => {
             this.playAnimation(this.imagesCoin);
         }, 300);
     }
