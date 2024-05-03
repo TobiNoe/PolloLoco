@@ -37,6 +37,10 @@ canvas {
     display: block;
 }
 
+button {
+    cursor: pointer;
+}
+
 .start-button {
     margin-top: 15px;
     height: 70px;
@@ -78,6 +82,19 @@ canvas {
     border-color: #bf0000;
 }
 
+.btn-control {
+    fill: #bf0000;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    background-color: rgba(255, 171, 0, 0.5);
+    border-radius: 15px;
+    border-color: #bf0000;
+}
+
 .btn-nav img {
     width: 52px;
     height: 62px;
@@ -93,6 +110,10 @@ canvas {
 
 .space-around {
     justify-content: space-around;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .main {
