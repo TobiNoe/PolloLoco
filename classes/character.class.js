@@ -167,7 +167,7 @@ class Character extends MovableObject {
                     this.playAnimationIsDead(this.imagesDead);  
                 } else {
                     stopGame();
-                    showGameResultLost();
+                    showHideGameResultLost();
                 }
             }
         }, 300);
