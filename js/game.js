@@ -21,13 +21,19 @@ function init() {
     /* console.log('My character is', world.character); */
 }
 
+/**
+ * Shows the game result as lost
+ */
 function showGameResultLost() {
     document.getElementById('gameResult').classList.toggle('d-flex');
     document.getElementById('gameResult').classList.toggle('d-none');
 }
 
 window.addEventListener('keydown', (e) => {
-    /* console.log(e); */
+    /**
+     * Handles keydown events
+     * @param {object} e - The keydown event object
+     */
     if (e.code === 'Space'){
         keyboard.space = true;
     } 
@@ -47,6 +53,10 @@ window.addEventListener('keydown', (e) => {
 
 
 window.addEventListener('keyup', (e) => {
+    /**
+     * Handles keyup events
+     * @param {object} e - The keyup event object
+     */
     if (e.code === 'Space'){
         keyboard.space = false;
     } 
