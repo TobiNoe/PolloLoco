@@ -43,3 +43,34 @@ function restartGame() {
     });
     intervalIDs.splice(0, count);
 }
+
+function fullScreen() {
+    let fullscreen = document.getElementById('game');
+    enterFullscreen(fullscreen);
+    toggleIcons('btnFullScreen', 'btnNoFullScreen');
+}
+
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {  // iOS Safari
+        element.webkitRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}
+
+function toggleIcons(icon1, icon2) {
+    document.getElementById(icon1).classList.add('d-none');
+    document.getElementById(icon1).classList.remove('d-flex');
+    document.getElementById(icon2).classList.remove('d-none');
+    document.getElementById(icon2).classList.add('d-flex');
+}

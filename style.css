@@ -108,6 +108,10 @@ button {
     display: flex;
 }
 
+.d-block {
+    display: block;
+}
+
 .space-around {
     justify-content: space-around;
 }
