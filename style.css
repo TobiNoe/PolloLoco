@@ -134,8 +134,8 @@ button {
 
 .game {
     position: relative;
-    height: 480px;
-    aspect-ratio: 1.5 / 1;
+    /* height: 480px;
+    aspect-ratio: 1.5 / 1; */
 }
 
 .overlay {
@@ -164,6 +164,13 @@ button {
     z-index: 4;
 }
 
+@media all and (display-mode: fullscreen) {
+    canvas {
+        width: 100%;
+        aspect-ratio: 1 / 1.5;
+    }
+}
+
 @media only screen and (max-width: 720px) {
 
     canvas {
@@ -180,8 +187,6 @@ button {
 @media only screen and (max-height: 480px) {
 
     .start-screen,
-    .game,
-    .overlay,
     canvas {
         height: 100vh;
     }
