@@ -20,7 +20,6 @@ class Bottle extends CollactableObject {
 
     randomImage(){
         let imageIndex = Math.round(Math.random() * 1);
-        console.log(imageIndex);
         return imageIndex;
     }
 

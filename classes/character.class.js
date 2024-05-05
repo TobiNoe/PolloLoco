@@ -137,7 +137,7 @@ class Character extends MovableObject {
 
         setStoppableInterval(() => {
             if (!this.isDead()) {
-                if (this.isHurt()) {
+                if (this.isHurt() && !this.isJump) {
                     this.playAnimation(this.imagesHurt);
                 } else if (this.isJump) {
                     this.playAnimationJump(this.imagesJumping);
