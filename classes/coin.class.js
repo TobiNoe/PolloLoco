@@ -1,11 +1,11 @@
 class Coin extends CollactableObject {
     offset = {
         top: 50,
-        bottom:50,
+        bottom: 50,
         left: 50,
         right: 50
     };
-    imagesCoin =[
+    imagesCoin = [
         './img/8_coin/coin_1.png',
         './img/8_coin/coin_2.png'
     ];
@@ -22,11 +22,11 @@ class Coin extends CollactableObject {
     }
 
     drawFrameRed(ctx) {
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
-            ctx.stroke();
+        ctx.beginPath();
+        ctx.lineWidth = '4';
+        ctx.strokeStyle = 'red';
+        ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
+        ctx.stroke();
     }
 
     animate() {
