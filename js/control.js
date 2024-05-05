@@ -74,3 +74,13 @@ function toggleIcons(icon1, icon2) {
     document.getElementById(icon2).classList.remove('d-none');
     document.getElementById(icon2).classList.add('d-flex');
 }
+
+function showMobileControlPad() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // true for mobile device
+        document.getElementById('mobileControl').classList.add('d-flex');
+    } else {
+        // false for not mobile device
+        document.getElementById('mobileControl').classList.add('d-none');
+    }
+}

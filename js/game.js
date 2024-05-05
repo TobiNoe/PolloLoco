@@ -11,6 +11,7 @@ function init() {
     canvas = document.getElementById('canvas');
     // Create a new instance of the World class, passing in the canvas and keyboard objects, and assign it to the variable 'world'
     world = new World(canvas, keyboard);
+    showMobileControlPad();
     setTimeout(() => {
         hideStartScreen();
         showHideGameResultLost();   
