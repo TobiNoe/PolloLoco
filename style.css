@@ -137,7 +137,7 @@ button {
     aspect-ratio: 1.5;
 }
 
-.start-screen button  {
+.start-screen button {
     position: absolute;
 }
 
@@ -199,7 +199,14 @@ button {
         fill: white;
     }
 
-    .main{
+    .main {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+
+    #btnFullScreen {
         display: none;
     }
 }
@@ -212,6 +219,10 @@ button {
 
     .start-screen img {
         width: 100%;
+    }
+
+    #btnFullScreen {
+        display: none;
     }
 }
 
