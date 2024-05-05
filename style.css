@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -116,20 +117,28 @@ button {
     justify-content: center;
 }
 
+.portrait {
+    display: none;
+}
+
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
 }
 
 .start-screen {
     justify-content: center;
-    width: 720px;
-    height: 480px;
-    background-image: URL('./img/9_intro_outro_screens/start/startscreen_1.png');
-    background-size: cover;
-    background-position: 80% 60%;
+}
+
+.start-screen img {
+    height: 100svh;
+    max-height: 480px;
+    aspect-ratio: 1.5;
+}
+
+.start-screen button  {
+    position: absolute;
 }
 
 .game {
@@ -171,22 +180,43 @@ button {
     }
 }
 
+@media screen and (orientation: portrait) {
+    .portrait {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background-color: black;
+        width: 100%;
+        gap: 16px;
+    }
+
+    .portrait svg {
+        width: 80px;
+        height: 80px;
+        fill: white;
+    }
+
+    .main{
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 720px) {
 
     canvas {
         width: 100%;
     }
 
-    /*  .start-screen,
-    .game,
-    .overlay {
-        width: 100vw;
-    } */
+    .start-screen img {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-height: 480px) {
 
-    .start-screen,
     canvas {
         height: 100vh;
     }
