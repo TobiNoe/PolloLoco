@@ -24,6 +24,7 @@ function hideStartScreen() {
     document.getElementById('startscreen').classList.add('d-none');
     document.getElementById('startscreen').classList.remove('d-flex');
     document.getElementById('game').classList.remove('d-none');
+    document.getElementById('game').classList.add('d-flex');
 }
 
 /**

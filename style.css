@@ -29,11 +29,7 @@ h1 {
 }
 
 canvas {
-    position: absolute;
-    width: 720px;
-    height: 480px;
     background: black;
-    /* border: solid thin black; */
     display: block;
 }
 
@@ -138,8 +134,10 @@ button {
 
 .game {
     position: relative;
-    width: 720px;
+    /* top: auto; */
+    /* width: 720px; */
     height: 480px;
+    aspect-ratio: 1.5 / 1;
 }
 
 .overlay {
