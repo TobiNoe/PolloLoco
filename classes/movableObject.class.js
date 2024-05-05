@@ -112,15 +112,16 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(obj) {
-        // R -> L check collision Charater right side with obj left side
+        // R -> L check collision Charater right side with obj left side //korrektur da Offset-Links addiert werden musste!!! und nicht Offset-Rechts
         // L -> R check collision Charater left side with obj right side side
         // T -> B check collision Charater ontop with obj
         // B -> T check collision Charater bottom the obj
-        return this.x + this.width - this.offset.right > obj.x + obj.offset.right &&
+        return this.x + this.width - this.offset.right > obj.x + obj.offset.left &&
             this.x + this.offset.left < obj.x + obj.width - obj.offset.right &&
             this.y + this.height - this.offset.bottom > obj.y + obj.offset.top &&
             this.y + this.offset.top < obj.y + obj.height - obj.offset.bottom
     }
+
     isJumpOn(obj) {
         // R -> L check collision Charater right side with obj left side
         // L -> R check collision Charater left side with obj right side side

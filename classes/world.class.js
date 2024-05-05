@@ -186,6 +186,7 @@ class World {
         //draw rectangle
         obj.drawFrame(this.ctx);
         obj.drawFrameRed(this.ctx);
+        /* obj.drawFrameGreen(this.ctx); */
 
         /*  otherDirection = false / Taste nach Links wurde nicht gedrückt  */
         if (obj.otherDirection) {

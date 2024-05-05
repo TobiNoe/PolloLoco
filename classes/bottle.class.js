@@ -1,11 +1,11 @@
-class Bottle extends CollactableObject  {
+class Bottle extends CollactableObject {
     offset = {
         top: 10,
-        bottom:5,
+        bottom: 5,
         left: 30,
         right: 10
     };
-   
+
     constructor() {
         super().loadImage('./img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
         this.x = 200 + Math.random() * 2000;
@@ -20,6 +20,6 @@ class Bottle extends CollactableObject  {
         ctx.strokeStyle = 'red';
         ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
         ctx.stroke();
-}
+    }
 
 }
