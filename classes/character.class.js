@@ -1,6 +1,6 @@
 class Character extends MovableObject {
     x = 20; // default 20
-    y = 175;
+    y = 178;
     width = 100;
     height = 250;
     offset = {
@@ -137,7 +137,7 @@ class Character extends MovableObject {
 
         setStoppableInterval(() => {
             if (!this.isDead()) {
-                if (this.isHurt() && !this.isJump) {
+                if (this.isHurt()) {
                     this.playAnimation(this.imagesHurt);
                 } else if (this.isJump) {
                     this.playAnimationJump(this.imagesJumping);

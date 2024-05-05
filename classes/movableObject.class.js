@@ -42,7 +42,7 @@ class MovableObject extends DrawableObject {
         if (this instanceof ThrowableObject) {
             return true;
         } else {
-            return this.y < 173;
+            return this.y < 178;
         }
 
     }
@@ -97,6 +97,7 @@ class MovableObject extends DrawableObject {
                 this.speedY = 20;
                 this.noMove = false;
             } else if (i === 8) {
+                this.y = 178;
                 this.noMove = true;
             }
         } else if (this.currentImage = images.length) {
