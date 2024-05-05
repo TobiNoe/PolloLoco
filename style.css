@@ -166,8 +166,8 @@ button {
 
 @media all and (display-mode: fullscreen) {
     canvas {
-        width: 100%;
-        aspect-ratio: 1 / 1.5;
+        width: -webkit-fill-available;
+        height: 100vh;
     }
 }
 
