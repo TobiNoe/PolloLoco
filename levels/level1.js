@@ -35,10 +35,6 @@ function loadLevel1() {
             new Chicken(),
             new Chick(),
             new Chicken(),
-            new Chick(),
-            new Chicken(),
-            new Chick(),
-            new Chicken(),
             new Chick()
         ],
         //Clouds
@@ -47,6 +43,9 @@ function loadLevel1() {
             new Cloud()
         ],
         [
+            new Bottle(),
+            new Bottle(),
+            new Bottle(),
             new Bottle(),
             new Bottle(),
             new Bottle(),

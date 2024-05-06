@@ -74,10 +74,11 @@ class World {
 
     checkCollisionEndboss () {
         this.throwableBottles.forEach(bottle => {
-            if (bottle.isColliding(this.endboss)) {
+            if (bottle.isColliding(this.endboss) && !bottle.hitEnemy) {
                 this.endboss.hit();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.isBroken = true;
+                bottle.hitEnemy = true;
                 /* console.log('Endboss energy', this.endboss.energy); */
             }
         });
@@ -99,7 +100,7 @@ class World {
                 this.level.items.splice(index, 1);
                 this.collectedCoins += 20;
                 this.coinBar.setPercentage(this.collectedCoins);
-            } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle') {
+            } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle' && this.collectedBottles < 100) {
                 this.level.items.splice(index, 1);
                 this.collectedBottles += 20;
                 this.bottleBar.setPercentage(this.collectedBottles);
@@ -184,8 +185,8 @@ class World {
         obj.draw(this.ctx);
 
         //draw rectangle
-        obj.drawFrame(this.ctx);
-        obj.drawFrameRed(this.ctx);
+        /* obj.drawFrame(this.ctx); */
+        /* obj.drawFrameRed(this.ctx); */
         /* obj.drawFrameGreen(this.ctx); */
 
         /*  otherDirection = false / Taste nach Links wurde nicht gedrückt  */
