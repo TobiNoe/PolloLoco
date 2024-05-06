@@ -163,7 +163,7 @@ class Character extends MovableObject {
             if (this.isDead()) {
                 if (this.timerEndScreen < 10) {
                     this.timerEndScreen++;
-                    console.log(this.timerEndScreen);
+                    /* console.log(this.timerEndScreen); */
                     this.playAnimationIsDead(this.imagesDead);
                 } else {
                     stopGame();
