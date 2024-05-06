@@ -40,6 +40,10 @@ function loadLevel1() {
         //Clouds
         [
             new Cloud(),
+            new Cloud(),
+            new Cloud(),
+            new Cloud(),
+            new Cloud(),
             new Cloud()
         ],
         [
