@@ -82,3 +82,8 @@ function showMobileControlPad() {
         document.getElementById('mobileControl').classList.add('d-none');
     }
 }
+
+function stopAudio(audio) {
+    audio.pause();
+    audio.currentTime = 0;
+}
