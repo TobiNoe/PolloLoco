@@ -13,6 +13,7 @@ class World {
     collectedBottles = 0;
     throwableBottles = [];
     endboss = new Endboss();
+    hitSound = new Audio('./audio/hit.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -76,6 +77,7 @@ class World {
         this.throwableBottles.forEach(bottle => {
             if (bottle.isColliding(this.endboss) && !bottle.hitEnemy) {
                 this.endboss.hit();
+                bottle.bottleBreakSound.play();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.isBroken = true;
                 bottle.hitEnemy = true;
@@ -88,6 +90,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if ((this.character.isColliding(enemy) && !enemy.isDead()) || this.character.isColliding(this.endboss)) {
                 this.character.hit();
+                this.hitSound.play();
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
@@ -97,10 +100,12 @@ class World {
         this.level.items.forEach((item) => {
             let index = this.level.items.indexOf(item);
             if (this.character.isColliding(item) && item.isCollectedItem() === 'coin') {
+                item.collectCoinSound.play();
                 this.level.items.splice(index, 1);
                 this.collectedCoins += 20;
                 this.coinBar.setPercentage(this.collectedCoins);
             } else if (this.character.isColliding(item) && item.isCollectedItem() === 'bottle' && this.collectedBottles < 100) {
+                item.collectBottleSound.play();
                 this.level.items.splice(index, 1);
                 this.collectedBottles += 20;
                 this.bottleBar.setPercentage(this.collectedBottles);
@@ -120,6 +125,7 @@ class World {
     checkThrowableObject() {
         if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
+            bottle.throwSound.play();
             this.character.sleepTimer = 0;
             this.throwableBottles.push(bottle);
             this.collectedBottles -= 20;

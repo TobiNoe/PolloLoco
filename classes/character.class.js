@@ -76,7 +76,7 @@ class Character extends MovableObject {
     speed = 1; // speed default 1
     sleepTimer = 0;
     timerEndScreen = 0;
-    walkingSound = new Audio('../audio/walking.mp3');
+    walkingSound = new Audio('./audio/walking.mp3');
 
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
@@ -122,7 +122,10 @@ class Character extends MovableObject {
                 this.otherDirection = true;
                 this.sleepTimer = 0;
                 this.walkingSound.play();
+            }
 
+            if (this.isAboveGround()) {
+                this.walkingSound.pause(); 
             }
 
             if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {

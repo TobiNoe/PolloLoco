@@ -17,6 +17,8 @@ class ThrowableObject extends MovableObject {
     ];
     isBroken = false;
     hitEnemy = false;
+    throwSound = new Audio('./audio/throw.mp3');
+    bottleBreakSound = new Audio('./audio/bottleBreak.mp3');
 
     constructor(x, y) {
         super().loadImage('./img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
@@ -49,6 +51,7 @@ class ThrowableObject extends MovableObject {
                 this.playAnimation(this.bottleRotation);
             } else if (!this.notOnGround() || this.isBroken) {
                 this.playAnimationIsBroken(this.bottleSplash);
+                /* this.bottleBreakSound.play(); */
             }
 
         }, 100);
