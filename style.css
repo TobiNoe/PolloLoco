@@ -175,12 +175,12 @@ button {
     z-index: 4;
 }
 
-@media all and (display-mode: fullscreen) {
+/* @media screen and (display-mode: fullscreen) {
     canvas {
         width: -webkit-fill-available;
         height: 100vh;
     }
-}
+} */
 
 @media screen and (orientation: portrait) {
     .portrait {

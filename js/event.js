@@ -43,3 +43,21 @@ document.getElementById('btnJump').addEventListener('touchend', (e) => {
     e.preventDefault();
     keyboard.space = false;
 });
+
+document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement) { // Wenn es kein fullscreenElement gibt, dann ist der Vollbildmodus deaktiviert
+        toggleIcons('btnNoFullScreen', 'btnFullScreen'); // Toggle Icons, um den Vollbildmodus-Status zu aktualisieren
+    }
+});
+
+document.addEventListener('webkitfullscreenchange', function () {
+    if (!document.webkitFullscreenElement) {
+        toggleIcons('btnNoFullScreen', 'btnFullScreen');
+    }
+});
+
+document.addEventListener('msfullscreenchange', function () {
+    if (!document.msFullscreenElement) {
+        toggleIcons('btnNoFullScreen', 'btnFullScreen');
+    }
+});
