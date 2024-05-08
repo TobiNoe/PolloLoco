@@ -83,7 +83,9 @@ function showMobileControlPad() {
     }
 }
 
-function stopAudio(audio) {
-    audio.pause();
-    audio.currentTime = 0;
+function stopAudio() {
+    /* audio.pause();
+    audio.currentTime = 0; */
+    Array.from(document.querySelectorAll('audio, video')).forEach(el => el.muted = true);
+    console.log('stopSound');
 }
