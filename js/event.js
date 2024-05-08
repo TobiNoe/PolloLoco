@@ -50,11 +50,11 @@ document.addEventListener('fullscreenchange', function () {
     }
 });
 
-document.addEventListener('webkitfullscreenchange', function () {
+/* document.addEventListener('webkitfullscreenchange', function () {
     if (!document.webkitFullscreenElement) {
         toggleIcons('btnNoFullScreen', 'btnFullScreen');
     }
-});
+}); */
 
 document.addEventListener('msfullscreenchange', function () {
     if (!document.msFullscreenElement) {
