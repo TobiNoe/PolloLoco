@@ -10,6 +10,8 @@ let intervalIDs = [];
  */
 let intervalFN = [];
 
+let audioElements = [];
+
 /**
  * Sets up a stoppable interval.
  * @param {Function} fn - The function to execute at each interval.
@@ -23,6 +25,34 @@ function setStoppableInterval(fn, time) {
     let id = setInterval(fn, time);
     intervalIDs.push(id);
     intervalFN.push(options);
+}
+
+function setMutableAudio(audioPath) {
+    let audio = new Audio(audioPath);
+    audioElements.push(audio);
+    return audio;
+}
+
+function stopAudio() {
+    audioElements.forEach(audio => {
+        audio.volume = 0;
+    });
+}
+
+function startAudio() {
+    audioElements.forEach(audio => {
+        audio.volume = 1;
+    });
+}
+
+function muteAudio() {
+    toggleIcons('btnSoundOn', 'btnSoundOff');
+    stopAudio();
+}
+
+function unmuteAudio() {
+    toggleIcons('btnSoundOff', 'btnSoundOn');
+    startAudio();
 }
 
 /**
@@ -81,11 +111,4 @@ function showMobileControlPad() {
     } else {
         document.getElementById('mobileControl').classList.add('d-none');
     }
-}
-
-function stopAudio() {
-    /* audio.pause();
-    audio.currentTime = 0; */
-    Array.from(document.querySelectorAll('audio, video')).forEach(el => el.muted = true);
-    console.log('stopSound');
 }

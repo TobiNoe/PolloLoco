@@ -76,8 +76,8 @@ class Character extends MovableObject {
     speed = 1; // speed default 1
     sleepTimer = 0;
     /* timerEndScreen = 0; */
-    walkingSound = new Audio('./audio/walking.mp3');
-    lostSound = new Audio('./audio/lost2.mp3');
+    walkingSound = setMutableAudio('./audio/walking.mp3');
+    lostSound = setMutableAudio('./audio/lost2.mp3');
 
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
@@ -111,7 +111,7 @@ class Character extends MovableObject {
 
         setStoppableInterval(() => {
             this.sleepTimer++;
-            this.walkingSound.pause();
+            /* this.walkingSound.pause(); */
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX && !this.noMove) {
                 this.moveRight();
                 this.sleepTimer = 0;
@@ -126,7 +126,7 @@ class Character extends MovableObject {
             }
 
             if (this.isAboveGround()) {
-                this.walkingSound.pause(); 
+                this.walkingSound.pause();
             }
 
             if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {

@@ -9,7 +9,7 @@ class Coin extends CollactableObject {
         './img/8_coin/coin_1.png',
         './img/8_coin/coin_2.png'
     ];
-    collectCoinSound = new Audio('./audio/collectCoin.mp3');
+    collectCoinSound = setMutableAudio('./audio/collectCoin.mp3');
 
 
     constructor() {

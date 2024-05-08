@@ -46,7 +46,7 @@ class Endboss extends MovableObject {
     ];
     isAlert = false;
     isAttack = false;
-    wonSound = new Audio('./audio/win.mp3');
+    wonSound = setMutableAudio('./audio/win.mp3');
 
     constructor() {
         super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');

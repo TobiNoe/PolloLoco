@@ -13,7 +13,7 @@ class World {
     collectedBottles = 0;
     throwableBottles = [];
     endboss = new Endboss();
-    hitSound = new Audio('./audio/hit.mp3');
+    hitSound = setMutableAudio('./audio/hit.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');

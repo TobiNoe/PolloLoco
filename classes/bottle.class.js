@@ -9,7 +9,7 @@ class Bottle extends CollactableObject {
         './img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
         './img/6_salsa_bottle/2_salsa_bottle_on_ground.png'
     ]
-    collectBottleSound = new Audio('./audio/collect.mp3');
+    collectBottleSound = setMutableAudio('./audio/collect.mp3');
 
     constructor() {
         super().loadImage(this.imagesBottle[this.randomImage()]);
