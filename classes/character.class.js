@@ -75,8 +75,9 @@ class Character extends MovableObject {
     world;
     speed = 1; // speed default 1
     sleepTimer = 0;
-    timerEndScreen = 0;
+    /* timerEndScreen = 0; */
     walkingSound = new Audio('./audio/walking.mp3');
+    lostSound = new Audio('./audio/lost2.mp3');
 
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
@@ -171,6 +172,7 @@ class Character extends MovableObject {
                 } else {
                     stopGame();
                     showHideGameResultLost();
+                    this.lostSound.play();
                 }
             }
         }, 300);

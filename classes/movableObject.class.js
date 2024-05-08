@@ -19,6 +19,7 @@ class MovableObject extends DrawableObject {
     };
     isJump = false;
     noMove = false;
+    timerEndScreen = 0;
 
     /**
      * Simulates gravity by applying a downward force to the object.

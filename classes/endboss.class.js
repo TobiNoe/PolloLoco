@@ -46,6 +46,7 @@ class Endboss extends MovableObject {
     ];
     isAlert = false;
     isAttack = false;
+    wonSound = new Audio('./audio/win.mp3');
 
     constructor() {
         super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');
@@ -76,7 +77,7 @@ class Endboss extends MovableObject {
                     this.playAnimation(this.imagesHurt);
                 } else {
                     if (this.speed > 0 && !this.isAttack) {
-                        this.playAnimation(this.imagesWalking);   
+                        this.playAnimation(this.imagesWalking);
                     } else if (this.speed > 0 && this.isAttack) {
                         this.playAnimation(this.imagesAttack);
                     } else if (this.speed === 0 && this.isAlert) {
@@ -84,14 +85,21 @@ class Endboss extends MovableObject {
                     } else {
                         this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
                     }
-                    
+
                 }
             }
         }, 200);
 
         setStoppableInterval(() => {
             if (this.isDead()) {
-                this.playAnimationIsDead(this.imagesDead);
+                if (this.timerEndScreen < 8) {
+                    this.timerEndScreen++;
+                    this.playAnimationIsDead(this.imagesDead);
+                } else {
+                    stopGame();
+                    showHideGameResultLost();
+                    this.wonSound.play();
+                }
             }
         }, 300);
     }
