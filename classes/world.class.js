@@ -82,6 +82,8 @@ class World {
                 bottle.isBroken = true;
                 bottle.hitEnemy = true;
                 /* console.log('Endboss energy', this.endboss.energy); */
+            } else if (bottle.y == 360 && bottle.speedY == 0) {
+                bottle.bottleBreakSound.play();    
             }
         });
     }
@@ -136,7 +138,7 @@ class World {
     checkSplashedBottles() {
         this.throwableBottles.forEach((bottle) => {
             let index = this.throwableBottles.indexOf(bottle);
-            if (!this.throwableBottles[index].throwing) {   
+            if (!this.throwableBottles[index].throwing) {
                 this.throwableBottles.splice(index, 1);
             }
         });

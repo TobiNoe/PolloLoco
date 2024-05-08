@@ -41,6 +41,7 @@ class ThrowableObject extends MovableObject {
             } else {
                 this.y = 360;
                 this.speedY = 0;
+                /* this.bottleBreakSound.play(); */
             }
         }, 25);
     }
@@ -51,7 +52,6 @@ class ThrowableObject extends MovableObject {
                 this.playAnimation(this.bottleRotation);
             } else if (!this.notOnGround() || this.isBroken) {
                 this.playAnimationIsBroken(this.bottleSplash);
-                /* this.bottleBreakSound.play(); */
             }
 
         }, 100);
