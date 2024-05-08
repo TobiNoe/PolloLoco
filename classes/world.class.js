@@ -123,7 +123,7 @@ class World {
     }
 
     checkThrowableObject() {
-        if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0) {
+        if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
             bottle.throwSound.play();
             this.character.sleepTimer = 0;
@@ -142,7 +142,6 @@ class World {
         });
     }
 
-    //wird so oft ausgeführt, wie es die Leistung der Grafikkarte her gibt
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
