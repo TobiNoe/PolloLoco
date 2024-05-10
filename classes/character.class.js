@@ -111,7 +111,44 @@ class Character extends MovableObject {
 
         setStoppableInterval(() => {
             this.sleepTimer++;
-            /* this.walkingSound.pause(); */
+            if (!this.isDead()) {
+                if (!this.noMove) {
+                    if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
+                        this.moveRight();
+                        this.sleepTimer = 0;
+                        this.walkingSound.play();
+                    } else if (this.world.keyboard.left && this.x > -250) {
+                        this.moveLeft();
+                        this.otherDirection = true;
+                        this.sleepTimer = 0;
+                        this.walkingSound.play();
+                    }
+                } else if (this.noMove && !this.isAboveGround()) {
+                    this.walkingSound.pause();
+                }
+
+                if (this.world.keyboard.space && !this.isAboveGround()) {
+                    this.jump();
+                    this.sleepTimer = -100;
+                }
+            }
+
+
+
+            /* if (this.isAboveGround() && this.walkingSound.play()) {
+                this.walkingSound.pause();
+            } */
+
+
+
+            //Layer move with Character
+            this.world.cameraX = -this.x + 50;
+
+        }, 1000 / 60);
+
+        /* setStoppableInterval(() => {
+            this.sleepTimer++;
+            
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX && !this.noMove) {
                 this.moveRight();
                 this.sleepTimer = 0;
@@ -125,19 +162,20 @@ class Character extends MovableObject {
                 this.walkingSound.play();
             }
 
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() && this.walkingSound.play()) {
                 this.walkingSound.pause();
             }
 
             if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
                 this.sleepTimer = -100;
+                
             }
 
-            //Layer move with Character
+            
             this.world.cameraX = -this.x + 50;
 
-        }, 1000 / 60);
+        }, 1000 / 60); */
 
         setStoppableInterval(() => {
             if (!this.isDead()) {
