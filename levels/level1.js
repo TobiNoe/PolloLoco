@@ -33,14 +33,14 @@ function loadLevel1() {
         ],
         //Enemies
         [
-            new Chicken(),
+           /*  new Chicken(),
             new Chick(),
             new Chicken(),
             new Chick(),
             new Chicken(),
             new Chick(),
             new Chicken(),
-            new Chick()
+            new Chick() */
         ],
         //Clouds
         [

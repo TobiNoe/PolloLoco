@@ -6,11 +6,13 @@ let keyboard = new Keyboard();
 /**
  * Initializes the code when the page loads.
  */
-function init() {
+async function init() {
     // Get the canvas element with id 'canvas' and assign it to the variable 'canvas'
     canvas = document.getElementById('canvas');
+    intervalIDs = [];
     // Create a new instance of the World class, passing in the canvas and keyboard objects, and assign it to the variable 'world'
     world = new World(canvas, keyboard);
+    unmuteAudio();
     showMobileControlPad();
     resetGameResult();
     hideStartScreen();

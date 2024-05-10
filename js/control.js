@@ -1,15 +1,5 @@
-/**
- * Array to store the IDs of the intervals
- * @type {number[]}
- */
 let intervalIDs = [];
-
-/**
- * Array to store the function and interval options associated with each interval
- * @type {Object[]}
- */
 let intervalFN = [];
-
 let audioElements = [];
 
 /**
@@ -68,8 +58,9 @@ function stopGame() {
 function restartGame() {
     let count = intervalIDs.length;
     intervalIDs.forEach(index => {
+        /* console.log(index); */
         setStoppableInterval(intervalFN[index - 1].fnName, intervalFN[index - 1].interval);
-        intervalIDs.splice()
+        /* intervalIDs.splice() */
     });
     intervalIDs.splice(0, count);
 }
