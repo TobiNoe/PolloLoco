@@ -172,7 +172,7 @@ class Character extends MovableObject {
                 } else {
                     stopGame();
                     changeGameResult('lost');
-                    showHideGameResult();
+                    showGameResult();
                     this.lostSound.play();
                 }
             }

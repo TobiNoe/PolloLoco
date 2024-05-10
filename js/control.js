@@ -112,3 +112,15 @@ function showMobileControlPad() {
         document.getElementById('mobileControl').classList.add('d-none');
     }
 }
+
+function showInfo() {
+    document.getElementById('info').classList.remove('d-none');
+    document.getElementById('info').classList.add('d-flex');
+    stopGame();
+}
+
+function hideInfo() {
+    document.getElementById('info').classList.add('d-none');
+    document.getElementById('info').classList.remove('d-flex');
+    restartGame();
+}

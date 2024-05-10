@@ -98,7 +98,7 @@ class Endboss extends MovableObject {
                 } else {
                     stopGame();
                     changeGameResult('win');
-                    showHideGameResult();
+                    showGameResult();
                     this.wonSound.play();
                 }
             }

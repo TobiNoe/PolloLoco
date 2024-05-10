@@ -13,11 +13,12 @@ function init() {
     world = new World(canvas, keyboard);
     showMobileControlPad();
     resetGameResult();
-    setTimeout(() => {
+    hideStartScreen();
+    hideGameResult();
+    /* setTimeout(() => {
         hideStartScreen();
-        resetGameResult();
-        showHideGameResult();
-    }, 100);
+        hideGameResult();
+    }, 100); */
 
     // Print the character property of the world object to the console
     /* console.log('My character is', world.character); */
@@ -30,12 +31,14 @@ function hideStartScreen() {
     document.getElementById('game').classList.add('d-flex');
 }
 
-/**
- * Shows the game result as lost
- */
-function showHideGameResult() {
-    document.getElementById('gameResult').classList.toggle('d-flex');
-    document.getElementById('gameResult').classList.toggle('d-none');
+function hideGameResult() {
+    document.getElementById('gameResult').classList.remove('d-flex');
+    document.getElementById('gameResult').classList.add('d-none');
+}
+
+function showGameResult() {
+    document.getElementById('gameResult').classList.add('d-flex');
+    document.getElementById('gameResult').classList.remove('d-none');
 }
 
 function changeGameResult(result) {
