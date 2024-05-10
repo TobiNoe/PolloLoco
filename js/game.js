@@ -12,11 +12,13 @@ function init() {
     // Create a new instance of the World class, passing in the canvas and keyboard objects, and assign it to the variable 'world'
     world = new World(canvas, keyboard);
     showMobileControlPad();
+    resetGameResult();
     setTimeout(() => {
         hideStartScreen();
-        showHideGameResultLost();   
+        resetGameResult();
+        showHideGameResult();
     }, 100);
-    
+
     // Print the character property of the world object to the console
     /* console.log('My character is', world.character); */
 }
@@ -31,7 +33,23 @@ function hideStartScreen() {
 /**
  * Shows the game result as lost
  */
-function showHideGameResultLost() {
+function showHideGameResult() {
     document.getElementById('gameResult').classList.toggle('d-flex');
     document.getElementById('gameResult').classList.toggle('d-none');
+}
+
+function changeGameResult(result) {
+    if (result === 'win') {
+        document.getElementById('gameResult').classList.add('game_result_win');
+        document.getElementById('gameResultWin').classList.remove('d-none');
+        
+    } else if (result === 'lost') {
+        document.getElementById('gameResult').classList.add('game_result_lost');
+    }
+}
+
+function resetGameResult() {
+    document.getElementById('gameResult').classList.remove('game_result_win');
+    document.getElementById('gameResult').classList.remove('game_result_lost');
+    document.getElementById('gameResultWin').classList.add('d-none');    
 }

@@ -171,7 +171,8 @@ class Character extends MovableObject {
                     this.playAnimationIsDead(this.imagesDead);
                 } else {
                     stopGame();
-                    showHideGameResultLost();
+                    changeGameResult('lost');
+                    showHideGameResult();
                     this.lostSound.play();
                 }
             }

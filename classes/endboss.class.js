@@ -97,7 +97,8 @@ class Endboss extends MovableObject {
                     this.playAnimationIsDead(this.imagesDead);
                 } else {
                     stopGame();
-                    showHideGameResultLost();
+                    changeGameResult('win');
+                    showHideGameResult();
                     this.wonSound.play();
                 }
             }
