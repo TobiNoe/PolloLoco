@@ -9,6 +9,34 @@
     src: url('./fonts/CaveatBrush-Regular.ttf') format('truetype');
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+/* * {
+    scrollbar-width: auto;
+    scrollbar-color: #bf0000 #ffffff;
+} */
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #F4DC00;
+    border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #ffab00;
+    border-radius: 10px;
+    border: 2px solid #F4DC00;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #bf0000;
+    cursor: pointer;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -226,7 +254,7 @@ button {
     background-image: url('./img/5_background/second_half_background.png');
     background-size: cover;
     background-position: 50% 50%;
-    backdrop-filter: blur(10px);    
+    backdrop-filter: blur(10px);
 }
 
 .info_screen span {
