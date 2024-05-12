@@ -116,15 +116,17 @@ class Character extends MovableObject {
                     if (this.world.keyboard.right && this.x < this.world.level.levelEndX) {
                         this.moveRight();
                         this.sleepTimer = 0;
-                        this.walkingSound.play();
+                        if (!this.isAboveGround()) {
+                            this.walkingSound.play();
+                        }
                     } else if (this.world.keyboard.left && this.x > -250) {
                         this.moveLeft();
                         this.otherDirection = true;
                         this.sleepTimer = 0;
-                        this.walkingSound.play();
+                        if (!this.isAboveGround()) {
+                            this.walkingSound.play();
+                        }
                     }
-                } else if (this.noMove && !this.isAboveGround()) {
-                    this.walkingSound.pause();
                 }
 
                 if (this.world.keyboard.space && !this.isAboveGround()) {
@@ -132,50 +134,10 @@ class Character extends MovableObject {
                     this.sleepTimer = -100;
                 }
             }
-
-
-
-            /* if (this.isAboveGround() && this.walkingSound.play()) {
-                this.walkingSound.pause();
-            } */
-
-
-
             //Layer move with Character
             this.world.cameraX = -this.x + 50;
 
         }, 1000 / 60);
-
-        /* setStoppableInterval(() => {
-            this.sleepTimer++;
-            
-            if (this.world.keyboard.right && this.x < this.world.level.levelEndX && !this.noMove) {
-                this.moveRight();
-                this.sleepTimer = 0;
-                this.walkingSound.play();
-            }
-
-            if (this.world.keyboard.left && this.x > -250 && !this.isDead() && !this.noMove) {
-                this.moveLeft();
-                this.otherDirection = true;
-                this.sleepTimer = 0;
-                this.walkingSound.play();
-            }
-
-            if (this.isAboveGround() && this.walkingSound.play()) {
-                this.walkingSound.pause();
-            }
-
-            if (this.world.keyboard.space && !this.isAboveGround() && !this.isDead()) {
-                this.jump();
-                this.sleepTimer = -100;
-                
-            }
-
-            
-            this.world.cameraX = -this.x + 50;
-
-        }, 1000 / 60); */
 
         setStoppableInterval(() => {
             if (!this.isDead()) {
