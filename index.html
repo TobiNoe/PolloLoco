@@ -113,11 +113,52 @@
                 <h1 id="gameResultWin" class="d-none">WINNER!</h1>
             </div>
             <div id="info" class="info_screen d-none">
-                <button id="btnInfoClose" class="btn-control" onclick="hideInfo()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
-                        <path
-                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-                    </svg>
+                <div class="d-flex justify-end">
+                    <button id="btnInfoClose" class="btn-control" onclick="hideInfo()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+                            <path
+                                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="info-screen-scroll">
+                    <span class="p-left">Control-Panel only show in mobile mode</span>
+                    <div class="d-flex align-center">
+                        <span class="btn-nav btn-border">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path d="M640-80 240-480l400-400 71 71-329 329 329 329-71 71Z" />
+                            </svg>
+                        </span>
+                        <span class="btn-explain">or arrow left - move Character to the left</span>
+                    </div>
+                    <div class="d-flex align-center">
+                        <span class="btn-nav btn-border">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+                            </svg>
+                        </span>
+                        <span class="btn-explain">or arrow right - move Character to the right</span>
+                    </div>
+                    <div class="d-flex align-center">
+                        <span class="btn-nav btn-border">
+                            <img src="./img/6_salsa_bottle/salsa_bottle.png" alt="">
+                        </span>
+                        <span class="btn-explain">or key "w" - Character throw bottle</span>
+                    </div>
+                    <div class="d-flex align-center">
+                        <span class="btn-nav btn-border">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path
+                                    d="M320-160q-117 0-198.5-81.5T40-440q0-107 70.5-186.5T287-718l-63-66 56-56 160 160-160 160-56-57 59-59q-71 14-117 69t-46 127q0 83 58.5 141.5T320-240h120v80H320Zm200-360v-280h360v280H520Zm0 360v-280h360v280H520Zm80-80h200v-120H600v120Z" />
+                            </svg>
+                        </span>
+                        <span class="btn-explain">or key "space" - Character jump</span>
+                    </div>
+                    <span class="p-left">Impressum & Datenschutz:</span>
+                    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, pariatur asperiores possimus
+                        nemo provident iste sit quis odit ipsa. Porro natus nostrum veniam illo necessitatibus quod sit
+                        unde rem consequuntur.</div>
+                </div>
             </div>
         </div>
     </div>
