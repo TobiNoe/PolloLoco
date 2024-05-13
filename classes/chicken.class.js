@@ -9,6 +9,7 @@ class Chicken extends MovableObject {
         './img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
     ];
     imageDead = './img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
+
     /**
      * Create a Chicken instance.
      */
@@ -24,16 +25,20 @@ class Chicken extends MovableObject {
      * Animate the chicken object.
      */
     animate() {
-        
         setStoppableInterval(() => this.moveLeft(this.speed), 25);
+        setStoppableInterval(() => this.playChicken(), 200);
+    }
 
-
-        setStoppableInterval(() => {
-            if (this.isDead()) {
-                this.loadImage(this.imageDead);
-            } else {
-                this.playAnimation(this.imagesWalking);
-            }
-        }, 200);
+    /**
+    * Plays the appropriate animation for a chicken based on its state.
+    * If the chicken is dead, it loads the image of a dead chicken.
+    * If the chicken is alive, it plays the walking animation.
+    */
+    playChicken() {
+        if (this.isDead()) {
+            this.loadImage(this.imageDead);
+        } else {
+            this.playAnimation(this.imagesWalking);
+        }
     }
 }
