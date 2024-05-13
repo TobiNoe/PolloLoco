@@ -90,7 +90,7 @@ class World {
 
     checkCollisionEnemys() {
         this.level.enemies.forEach((enemy) => {
-            if ((this.character.isColliding(enemy) && !enemy.isDead()) || this.character.isColliding(this.endboss)) {
+            if ((this.character.isColliding(enemy) && !enemy.isDead() && !this.character.isDead()) || (this.character.isColliding(this.endboss) && !this.character.isDead())) {
                 this.character.hit();
                 this.hitSound.play();
                 this.statusBar.setPercentage(this.character.energy);
