@@ -78,6 +78,9 @@ class Character extends MovableObject {
     walkingSound = setMutableAudio('./audio/walking.mp3');
     lostSound = setMutableAudio('./audio/lost2.mp3');
 
+    /**
+    * Represents a character in the game.
+    */
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.imagesIdle);
@@ -90,15 +93,22 @@ class Character extends MovableObject {
         this.animate();
     }
 
+    /**
+    * Starts the character animation loops.
+    */
     animate() {
         setStoppableInterval(() => this.playCharacter(), 1000 / 60);
         setStoppableInterval(() => this.animateCharacter(), 200);
         setStoppableInterval(() => this.animateDeadCharacter(), 300);
     }
 
+    /**
+    * Plays character actions and handles movement.
+    */
     playCharacter() {
         this.sleepTimer++;
         if (!this.isDead()) {
+            // Handle horizontal movement
             if (!this.noMove) {
                 if (this.isMoveRight()) {
                     this.moveRight();
@@ -108,41 +118,66 @@ class Character extends MovableObject {
             }
 
             if (this.isJumping()) {
-                this.jump(); 
+                this.jump();
             }
         }
-        //Layer move with Character
+
+        // Move the game camera with the character
         this.world.cameraX = -this.x + 50;
     }
 
+    /**
+    * Checks if the character should move right.
+    * @returns {boolean} True if character should move right, false otherwise.
+    */
     isMoveRight() {
         return this.world.keyboard.right && this.x < this.world.level.levelEndX;
     }
 
+    /**
+    * Moves the character to the right.
+    */
     moveRight() {
         super.moveRight();
         this.sleepTimer = 0;
     }
 
+    /**
+    * Checks if the character should move left.
+    * @returns {boolean} True if character should move left, false otherwise.
+    */
     isMoveLeft() {
         return this.world.keyboard.left && this.x > -250;
     }
 
+    /**
+    * Moves the character to the left.
+    */
     moveLeft() {
         super.moveLeft();
         this.otherDirection = true;
         this.sleepTimer = 0;
     }
 
+    /**
+    * Checks if the character should jump.
+    * @returns {boolean} True if character should jump, false otherwise.
+    */
     isJumping() {
         return this.world.keyboard.space && !this.isAboveGround();
     }
 
+    /**
+    * Makes the character jump.
+    */
     jump() {
         super.jump();
         this.sleepTimer = -100;
     }
 
+    /**
+    * Animates the character based on its state.
+    */
     animateCharacter() {
         if (!this.isDead()) {
             if (this.isHurt()) {
@@ -165,14 +200,29 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+    * Checks if the character is hurt.
+    * @returns {boolean} True if character is hurt, false otherwise.
+    */
     isHurt() {
         return super.isHurt() && !this.isJump;
     }
 
+    /**
+    * Checks if the character is walking.
+    * @returns {boolean} True if character is walking, false otherwise.
+    */
     isWalking() {
-        return (this.world.keyboard.right || this.world.keyboard.left) && !this.isAboveGround() && !this.isJump;
+        return (
+            (this.world.keyboard.right || this.world.keyboard.left) &&
+            !this.isAboveGround() &&
+            !this.isJump
+        );
     }
 
+    /**
+    * Plays the walking animation and sound.
+    */
     walking() {
         this.characterIdle = false;
         this.characterSleeping = false;
@@ -180,18 +230,33 @@ class Character extends MovableObject {
         this.walkingSound.play();
     }
 
+    /**
+    * Checks if the character is idle.
+    * @returns {boolean} True if character is idle, false otherwise.
+    */
     isIdle() {
         return this.sleepTimer > 200;
     }
 
+    /**
+    * Checks if the character is dozing.
+    * @returns {boolean} True if character is dozing, false otherwise.
+    */
     isDozing() {
         return this.sleepTimer > 200 && this.sleepTimer <= 300;
     }
 
+    /**
+    * Checks if the character is sleeping.
+    * @returns {boolean} True if character is sleeping, false otherwise.
+    */
     isSleeping() {
         return this.sleepTimer > 300;
     }
 
+    /**
+    * Animates the dead character.
+    */
     animateDeadCharacter() {
         if (this.isDead()) {
             if (this.timerEndScreen < 10) {
@@ -202,11 +267,17 @@ class Character extends MovableObject {
         }
     }
 
+    /**
+    * Plays the death animation for the character.
+    */
     animateDeath() {
         this.timerEndScreen++;
         this.playAnimationIsDead(this.imagesDead);
     }
 
+    /**
+    * Animates the end screen when the character is dead.
+    */
     animateEndScreen() {
         stopGame();
         changeGameResult('lost');
