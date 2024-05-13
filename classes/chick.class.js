@@ -9,6 +9,10 @@ class Chick extends Chicken {
     ];
     imageDead = 'img/3_enemies_chicken/chicken_small/2_dead/dead.png';
 
+    /**
+     * Creates an instance of YourClass.
+     * @constructor
+     */
     constructor() {
         super();
         this.loadImages(this.imagesWalking);

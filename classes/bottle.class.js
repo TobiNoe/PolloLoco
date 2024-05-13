@@ -11,6 +11,10 @@ class Bottle extends CollactableObject {
     ]
     collectBottleSound = setMutableAudio('./audio/collect.mp3');
 
+    /**
+     * Creates an instance of YourClass.
+     * @constructor
+     */
     constructor() {
         super().loadImage(this.imagesBottle[this.randomImage()]);
         this.x = 200 + Math.random() * 2000;
@@ -19,17 +23,12 @@ class Bottle extends CollactableObject {
         this.height = 75;
     }
 
-    randomImage(){
+    /**
+     * Generates a random image index.
+     * @returns {number} - The randomly generated index.
+     */
+    randomImage() {
         let imageIndex = Math.round(Math.random() * 1);
         return imageIndex;
     }
-
-    drawFrameRed(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '4';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
-        ctx.stroke();
-    }
-
 }

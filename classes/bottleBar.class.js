@@ -11,6 +11,10 @@ class BottleBar extends StatusBar {
         './img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png'
     ];
 
+    /**
+     * Creates an instance of YourClass.
+     * @constructor
+     */
     constructor() {
         super();
         this.loadImages(this.images);
