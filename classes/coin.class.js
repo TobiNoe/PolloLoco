@@ -12,6 +12,10 @@ class Coin extends CollactableObject {
     collectCoinSound = setMutableAudio('./audio/collectCoin.mp3');
 
 
+    /**
+    * Represents a Coin object.
+    * @constructor
+    */
     constructor() {
         super().loadImage('./img/8_coin/coin_1.png');
         this.loadImages(this.imagesCoin);
@@ -22,18 +26,11 @@ class Coin extends CollactableObject {
         this.animate();
     }
 
-    drawFrameRed(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '4';
-        ctx.strokeStyle = 'red';
-        ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
-        ctx.stroke();
-    }
-
+    /**
+    * Animates the coin.
+    */
     animate() {
-        setStoppableInterval(() => {
-            this.playAnimation(this.imagesCoin);
-        }, 300);
+        setStoppableInterval(() => this.playAnimation(this.imagesCoin), 300);
     }
 
 }
