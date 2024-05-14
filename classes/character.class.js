@@ -76,6 +76,7 @@ class Character extends MovableObject {
     speed = 1; // speed default 1
     sleepTimer = 0;
     walkingSound = setMutableAudio('./audio/walking.mp3');
+    snoringSound = setMutableAudio('./audio/snoring.mp3');
     lostSound = setMutableAudio('./audio/lost2.mp3');
 
     /**
@@ -108,7 +109,6 @@ class Character extends MovableObject {
     playCharacter() {
         this.sleepTimer++;
         if (!this.isDead()) {
-            // Handle horizontal movement
             if (!this.noMove) {
                 if (this.isMoveRight()) {
                     this.moveRight();
@@ -127,6 +127,72 @@ class Character extends MovableObject {
     }
 
     /**
+    * Animates the character based on its state.
+    */
+    animateCharacter() {
+        if (!this.isDead()) {
+            if (this.isHurt()) {
+                this.playHurtAnimation();
+            } else if (this.isJump) {
+                this.playJumpAnimation();
+            } else {
+                if (this.isWalking()) {
+                    this.walking();
+                } else if (this.isIdle()) {
+                    if (this.isDozing()) {
+                        this.playIdleAnimation();
+                    } else if (this.isSleeping()) {
+                        this.playSleepAnimation();
+                    }
+                } else {
+                    this.playStandAnimation();
+                }
+            }
+        }
+    }
+
+    /**
+    * Animates the dead character.
+    */
+    animateDeadCharacter() {
+        if (this.isDead()) {
+            if (this.timerEndScreen < 10) {
+                this.animateDeath();
+            } else {
+                this.animateEndScreen();
+            }
+        }
+    }
+
+    /**
+    * Plays the death animation for the character.
+    */
+    animateDeath() {
+        this.timerEndScreen++;
+        this.playAnimationIsDead(this.imagesDead);
+    }
+
+    /**
+    * Animates the end screen when the character is dead.
+    */
+    animateEndScreen() {
+        stopGame();
+        changeGameResult('lost');
+        showGameResult();
+        this.lostSound.play();
+    }
+
+    /**
+    * Stops the snoring sound if the sleepTimer is greater than or equal to 300.
+    * @param {object} sleepTimer - The timer used to control the snoring sound.
+    */
+    stopSnoringSound(sleepTimer) {
+        if (sleepTimer >= 300) {
+            this.snoringSound.pause();
+        }
+    }
+
+    /**
     * Checks if the character should move right.
     * @returns {boolean} True if character should move right, false otherwise.
     */
@@ -138,6 +204,7 @@ class Character extends MovableObject {
     * Moves the character to the right.
     */
     moveRight() {
+        this.stopSnoringSound(this.sleepTimer);
         super.moveRight();
         this.sleepTimer = 0;
     }
@@ -154,6 +221,7 @@ class Character extends MovableObject {
     * Moves the character to the left.
     */
     moveLeft() {
+        this.stopSnoringSound(this.sleepTimer);
         super.moveLeft();
         this.otherDirection = true;
         this.sleepTimer = 0;
@@ -171,33 +239,46 @@ class Character extends MovableObject {
     * Makes the character jump.
     */
     jump() {
+        this.stopSnoringSound(this.sleepTimer);
         super.jump();
         this.sleepTimer = -100;
     }
 
     /**
-    * Animates the character based on its state.
+    * Play the hurt animation.
     */
-    animateCharacter() {
-        if (!this.isDead()) {
-            if (this.isHurt()) {
-                this.playAnimation(this.imagesHurt);
-            } else if (this.isJump) {
-                this.playAnimationJump(this.imagesJumping);
-            } else {
-                if (this.isWalking()) {
-                    this.walking();
-                } else if (this.isIdle()) {
-                    if (this.isDozing()) {
-                        this.playAnimation(this.imagesIdle);
-                    } else if (this.isSleeping()) {
-                        this.playAnimation(this.imagesSleep);
-                    }
-                } else {
-                    this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
-                }
-            }
-        }
+    playHurtAnimation() {
+        this.playAnimation(this.imagesHurt);
+        this.stopSnoringSound(this.sleepTimer);
+    }
+
+    /**
+    * Play the sleep animation.
+    */
+    playSleepAnimation() {
+        this.playAnimation(this.imagesSleep);
+        this.snoringSound.play();
+    }
+
+    /**
+    * Play the stand animation.
+    */
+    playStandAnimation() {
+        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
+    }
+
+    /**
+    * Play the idle animation.
+    */
+    playIdleAnimation() {
+        this.playAnimation(this.imagesIdle);
+    }
+
+    /**
+    * Play the jump animation.
+    */
+    playJumpAnimation() {
+        this.playAnimationJump(this.imagesJumping);
     }
 
     /**
@@ -252,36 +333,5 @@ class Character extends MovableObject {
     */
     isSleeping() {
         return this.sleepTimer > 300;
-    }
-
-    /**
-    * Animates the dead character.
-    */
-    animateDeadCharacter() {
-        if (this.isDead()) {
-            if (this.timerEndScreen < 10) {
-                this.animateDeath();
-            } else {
-                this.animateEndScreen();
-            }
-        }
-    }
-
-    /**
-    * Plays the death animation for the character.
-    */
-    animateDeath() {
-        this.timerEndScreen++;
-        this.playAnimationIsDead(this.imagesDead);
-    }
-
-    /**
-    * Animates the end screen when the character is dead.
-    */
-    animateEndScreen() {
-        stopGame();
-        changeGameResult('lost');
-        showGameResult();
-        this.lostSound.play();
     }
 }
