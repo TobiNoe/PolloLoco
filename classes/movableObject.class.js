@@ -20,6 +20,7 @@ class MovableObject extends DrawableObject {
     isJump = false;
     noMove = false;
     timerEndScreen = 0;
+    jumpingSound = setMutableAudio('./audio/jump.mp3');
 
     /**
      * Simulates gravity by applying a downward force to the object.
@@ -97,6 +98,7 @@ class MovableObject extends DrawableObject {
             if (i === 3) {
                 this.speedY = 20;
                 this.noMove = false;
+                this.jumpingSound.play();
             } else if (i === 8) {
                 this.y = 178;
                 this.noMove = true;
