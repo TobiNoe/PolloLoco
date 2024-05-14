@@ -7,7 +7,7 @@ class DrawableObject {
     imgCache = {};
     currentImage = 0;
     resetCurrentImage = true;
-    
+
     /**
     * Offset of Obj with initial values set to 0.
     * @type {Offset}
@@ -19,12 +19,19 @@ class DrawableObject {
         right: 0
     };
 
-
+    /**
+    * Loads and sets an image using the given path.
+    * @param {string} path - The path of the image.
+    */
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
 
+    /**
+    * Loads and sets multiple images using the given array of paths.
+    * @param {string[]} arr - The array of image paths.
+    */
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
@@ -33,27 +40,11 @@ class DrawableObject {
         });
     }
 
+    /**
+    * Draws the image on the canvas context.
+    * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
+    */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-    drawFrame(ctx) {
-        if (this instanceof Chick || this instanceof Chicken || this instanceof Character) {
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'green';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
-    drawFrameRed(ctx) {
-        if (this instanceof CollactableObject) {
-            ctx.beginPath();
-            ctx.lineWidth = '4';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
     }
 }
