@@ -78,6 +78,7 @@ class Character extends MovableObject {
     walkingSound = setMutableAudio('./audio/walking.mp3');
     snoringSound = setMutableAudio('./audio/snoring.mp3');
     lostSound = setMutableAudio('./audio/lost2.mp3');
+    jumpingSound = setMutableAudio('./audio/jump.mp3');
 
     /**
     * Represents a character in the game.

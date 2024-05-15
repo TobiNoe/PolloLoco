@@ -26,6 +26,7 @@ function setMutableAudio(audioPath) {
 function stopAudio() {
     audioElements.forEach(audio => {
         audio.volume = 0;
+        console.log('Sound Nr:', audio);
     });
 }
 
