@@ -26,12 +26,6 @@ class MovableObject extends DrawableObject {
      * Simulates gravity by applying a downward force to the object.
      */
     applyGravity() {
-        /**
-         * Applies gravity at a fixed interval of 30 frames per second.
-         * The object's Y position and vertical speed are updated accordingly.
-         * If the object is above the ground or has positive vertical speed,
-         * the Y position and speed are adjusted based on the object's acceleration.
-         */
         setStoppableInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
