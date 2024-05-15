@@ -48,6 +48,9 @@ class Endboss extends MovableObject {
     isAttack = false;
     wonSound = setMutableAudio('./audio/win.mp3');
 
+    /**
+    * Represents a endboss in the game.
+    */
     constructor() {
         super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');
         this.x = 2550;
@@ -60,12 +63,18 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
+    /**
+    * Sets up the animation cycles.
+    */
     animate() {
         setStoppableInterval(() => this.moveLeft(this.speed), 25);
         setStoppableInterval(() => this.animateEndbossMove(), 200);
         setStoppableInterval(() => this.animateEndbossDead(), 300);
     }
 
+    /**
+    * Animates the boss chicken when it is not dead.
+    */
     animateEndbossMove() {
         if (!this.isDead()) {
             if (this.isHurt()) {
@@ -84,6 +93,9 @@ class Endboss extends MovableObject {
         }
     }
 
+    /**
+    * Animates the boss chicken when it is dead.
+    */
     animateEndbossDead() {
         if (this.isDead()) {
             if (this.timerEndScreen < 8) {
@@ -94,43 +106,76 @@ class Endboss extends MovableObject {
         }
     }
 
+    /**
+    * Plays the hurt animation.
+    */
     playHurtAnimation() {
         this.playAnimation(this.imagesHurt);
     }
 
+    /**
+    * Checks if the boss chicken is walking.
+    * @returns {boolean} True if the boss chicken is walking, false otherwise.
+    */
     isWalking() {
         return this.speed > 0 && !this.isAttack;
     }
 
+    /**
+    * Plays the walk animation.
+    */
     playWalkAnimation() {
         this.playAnimation(this.imagesWalking);
     }
 
+    /**
+    * Checks if the boss chicken is attacking.
+    * @returns {boolean} True if the boss chicken is attacking, false otherwise.
+    */
     isAttacking() {
         return this.speed > 0 && this.isAttack;
     }
 
+    /**
+     * Plays the attack animation.
+     */
     playAttackAnimation() {
         this.playAnimation(this.imagesAttack);
     }
 
+    /**
+     * Checks if the boss chicken is in alert mode.
+     * @returns {boolean} True if the boss chicken is in alert mode, false otherwise.
+     */
     isEndbossAlert() {
         return this.speed === 0 && this.isAlert;
     }
 
+    /**
+     * Plays the alert animation.
+     */
     playAlertAnimation() {
         this.playAnimation(this.imagesAlert);
     }
 
+    /**
+     * Plays the stand animation.
+     */
     playStandAnimation() {
         this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
     }
 
+    /**
+     * Plays the dead animation.
+     */
     playDeadAnimation() {
         this.timerEndScreen++;
         this.playAnimationIsDead(this.imagesDead);
     }
 
+    /**
+     * Plays the end screen animation and performs game-related actions.
+     */
     playEndScreenAnimation() {
         stopGame();
         changeGameResult('win');
@@ -138,6 +183,9 @@ class Endboss extends MovableObject {
         this.wonSound.play();
     }
 
+    /**
+     * Decreases the boss chicken's energy by 20 and updates the last hit time.
+     */
     hit() {
         this.energy -= 20;
         if (this.energy < 0) {
