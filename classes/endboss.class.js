@@ -60,49 +60,82 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
-    drawFrame(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '4';
-        ctx.strokeStyle = 'yellow';
-        ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right - this.offset.left, this.height - this.offset.top - this.offset.bottom);
-        ctx.stroke();
-    }
-
     animate() {
         setStoppableInterval(() => this.moveLeft(this.speed), 25);
+        setStoppableInterval(() => this.animateEndbossMove(), 200);
+        setStoppableInterval(() => this.animateEndbossDead(), 300);
+    }
 
-        setStoppableInterval(() => {
-            if (!this.isDead()) {
-                if (this.isHurt()) {
-                    this.playAnimation(this.imagesHurt);
+    animateEndbossMove() {
+        if (!this.isDead()) {
+            if (this.isHurt()) {
+                this.playHurtAnimation();
+            } else {
+                if (this.isWalking()) {
+                    this.playWalkAnimation();
+                } else if (this.isAttacking()) {
+                    this.playAttackAnimation();
+                } else if (this.isEndbossAlert()) {
+                    this.playAlertAnimation();
                 } else {
-                    if (this.speed > 0 && !this.isAttack) {
-                        this.playAnimation(this.imagesWalking);
-                    } else if (this.speed > 0 && this.isAttack) {
-                        this.playAnimation(this.imagesAttack);
-                    } else if (this.speed === 0 && this.isAlert) {
-                        this.playAnimation(this.imagesAlert);
-                    } else {
-                        this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
-                    }
-
+                    this.playStandAnimation();
                 }
             }
-        }, 200);
+        }
+    }
 
-        setStoppableInterval(() => {
-            if (this.isDead()) {
-                if (this.timerEndScreen < 8) {
-                    this.timerEndScreen++;
-                    this.playAnimationIsDead(this.imagesDead);
-                } else {
-                    stopGame();
-                    changeGameResult('win');
-                    showGameResult();
-                    this.wonSound.play();
-                }
+    animateEndbossDead() {
+        if (this.isDead()) {
+            if (this.timerEndScreen < 8) {
+                this.playDeadAnimation();
+            } else {
+                this.playEndScreenAnimation();
             }
-        }, 300);
+        }
+    }
+
+    playHurtAnimation() {
+        this.playAnimation(this.imagesHurt);
+    }
+
+    isWalking() {
+        return this.speed > 0 && !this.isAttack;
+    }
+
+    playWalkAnimation() {
+        this.playAnimation(this.imagesWalking);
+    }
+
+    isAttacking() {
+        return this.speed > 0 && this.isAttack;
+    }
+
+    playAttackAnimation() {
+        this.playAnimation(this.imagesAttack);
+    }
+
+    isEndbossAlert() {
+        return this.speed === 0 && this.isAlert;
+    }
+
+    playAlertAnimation() {
+        this.playAnimation(this.imagesAlert);
+    }
+
+    playStandAnimation() {
+        this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
+    }
+
+    playDeadAnimation() {
+        this.timerEndScreen++;
+        this.playAnimationIsDead(this.imagesDead);
+    }
+
+    playEndScreenAnimation() {
+        stopGame();
+        changeGameResult('win');
+        showGameResult();
+        this.wonSound.play();
     }
 
     hit() {
