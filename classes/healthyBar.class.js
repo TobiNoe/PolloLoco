@@ -9,6 +9,10 @@ class HealthyBar extends StatusBar {
         './img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png'
     ];
 
+    /**
+     * Creates an instance of HealthyBar.
+     * It initializes the properties and loads the images.
+     */
     constructor() {
         super();
         this.loadImages(this.images);
