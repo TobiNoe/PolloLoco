@@ -11,6 +11,10 @@ class HealthyBarEndboss extends StatusBar {
         './img/7_statusbars/2_statusbar_endboss/green/green100.png'
     ];
 
+    /**
+     * Creates an instance of HealthyBarEndboss.
+     * It initializes the properties, loads the images, and sets the initial percentage.
+     */
     constructor() {
         super();
         this.loadImages(this.images);
