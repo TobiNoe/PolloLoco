@@ -77,13 +77,12 @@ class World {
         this.throwableBottles.forEach(bottle => {
             if (bottle.isColliding(this.endboss) && !bottle.hitEnemy) {
                 this.endboss.hit();
-                bottle.bottleBreakSound.play();
+                if (!mute) bottle.bottleBreakSound.play();
                 this.statusBarEndboss.setPercentage(this.endboss.energy);
                 bottle.isBroken = true;
                 bottle.hitEnemy = true;
-                /* console.log('Endboss energy', this.endboss.energy); */
             } else if (bottle.y == 360 && bottle.speedY == 0) {
-                bottle.bottleBreakSound.play();    
+                if (!mute) bottle.bottleBreakSound.play();    
             }
         });
     }
@@ -127,7 +126,7 @@ class World {
     checkThrowableObject() {
         if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection) {
             let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
-            bottle.throwSound.play();
+            if (!mute) bottle.throwSound.play();
             this.character.sleepTimer = 0;
             this.throwableBottles.push(bottle);
             this.collectedBottles -= 20;

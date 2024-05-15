@@ -1,6 +1,7 @@
 let intervalIDs = [];
 let intervalFN = [];
 let audioElements = [];
+let mute = false;
 
 /**
  * Sets up a stoppable interval.
@@ -24,13 +25,14 @@ function setMutableAudio(audioPath) {
 }
 
 function stopAudio() {
+    mute = true;
     audioElements.forEach(audio => {
         audio.volume = 0;
-        console.log('Sound Nr:', audio);
     });
 }
 
 function startAudio() {
+    mute = false;
     audioElements.forEach(audio => {
         audio.volume = 1;
     });
@@ -44,6 +46,14 @@ function muteAudio() {
 function unmuteAudio() {
     toggleIcons('btnSoundOff', 'btnSoundOn');
     startAudio();
+}
+
+function checkMuteOn(soundFile) {
+    if (audioElements[0].volume === 0) {
+        soundFile.volume = 0;
+        console.log(soundFile);
+        return soundFile;   
+    }
 }
 
 /**
