@@ -14,6 +14,7 @@ class World {
     throwableBottles = [];
     endboss = new Endboss();
     hitSound = setMutableAudio('./audio/hit.mp3');
+    hitEnemySound = setMutableAudio('./audio/hitandbirds.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -119,6 +120,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isJumpOn(enemy) && !this.character.isColliding(enemy) && this.character.speedY < 0) {
                 enemy.hit();
+                this.hitEnemySound.play();
             }
         });
     }
