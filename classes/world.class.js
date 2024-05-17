@@ -15,6 +15,8 @@ class World {
     endboss = new Endboss();
     hitSound = setMutableAudio('./audio/hit.mp3');
     hitEnemySound = setMutableAudio('./audio/hitandbirds.mp3');
+    songSound = setMutableAudio('./audio/song.mp3');
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -29,6 +31,8 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        this.songSound.loop = true;
+        this.songSound.play();
     }
 
     /**
@@ -43,6 +47,7 @@ class World {
             this.checkEndbossAttack();
             this.checkEndbossStartWalking();
             this.checkCollisionEndboss();
+            this.checkStopSong();
             /* console.log('character sleepTimer:', this.character.sleepTimer); */
         }, 25);
     }
@@ -143,6 +148,13 @@ class World {
                 this.throwableBottles.splice(index, 1);
             }
         });
+    }
+
+    checkStopSong() {
+        if (this.character.energy  === 0 || this.endboss.energy === 0) {
+            this.songSound.loop = false;
+            this.songSound.pause();    
+        }
     }
 
     draw() {
