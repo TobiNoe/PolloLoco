@@ -15,8 +15,10 @@ async function init() {
     unmuteAudio();
     showMobileControlPad();
     resetGameResult();
-    hideStartScreen();
-    hideGameResult();
+    setTimeout(() => {
+        hideStartScreen();
+        hideGameResult();
+    }, 300);
 }
 
 /**
