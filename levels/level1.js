@@ -1,3 +1,10 @@
+/**
+* Loads the first level of the game.
+* Creates a new Level object with specified layers, enemies, clouds, and items.
+* @function
+* @name loadLevel1
+* @returns {Level} The first level of the game.
+*/
 function loadLevel1() {
 
     const level1 = new Level(
