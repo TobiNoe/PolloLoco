@@ -278,17 +278,42 @@ class World {
     }
 
 
+    /**
+     * Checks if the character is attempting to throw a bottle and initiates the throwing action if so.
+     */
     checkThrowableObject() {
-        if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection) {
-            let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
-            if (!mute) bottle.throwSound.play();
-            this.character.sleepTimer = 0;
-            this.throwableBottles.push(bottle);
-            this.collectedBottles -= 20;
-            this.bottleBar.setPercentage(this.collectedBottles);
+        if (this.isThrowingBottle()) {
+            this.throwBottle();
         }
     }
-    //check on top if enboss is collided    
+
+    /**
+     * Checks if the character is currently attempting to throw a bottle.
+     * @returns {boolean} True if the character is pressing the throw button, alive, has collected bottles, and is not facing the other direction.
+     */
+    isThrowingBottle() {
+        return this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection;
+    }
+
+    /**
+     * Throws a bottle from the character's position if the conditions are met.
+     * Creates a new throwable bottle object, plays the throw sound (if not muted), resets the character's sleep timer,
+     * deducts bottles from the inventory, and updates the bottle bar.
+     */
+    throwBottle() {
+        let bottle = new ThrowableObject(this.character.x + 40, this.character.y + 100);
+        if (!mute) bottle.throwSound.play();
+        this.character.sleepTimer = 0;
+        this.throwableBottles.push(bottle);
+        this.collectedBottles -= 20;
+        this.bottleBar.setPercentage(this.collectedBottles);
+    }
+
+
+    /**
+     * Checks for splashed bottles and removes them from the list of throwable bottles.
+     * Removes any bottles from the list that are no longer being thrown.
+     */
     checkSplashedBottles() {
         this.throwableBottles.forEach((bottle) => {
             let index = this.throwableBottles.indexOf(bottle);
@@ -298,6 +323,10 @@ class World {
         });
     }
 
+    /**
+     * Stops the background music when either the character or the endboss runs out of energy.
+     * If either the character's or the endboss's energy reaches zero, the background music stops.
+     */
     checkStopSong() {
         if (this.character.energy === 0 || this.endboss.energy === 0) {
             this.songSound.loop = false;
@@ -305,14 +334,15 @@ class World {
         }
     }
 
+    /**
+     * Draws all game elements onto the canvas.
+     * This includes the background, characters, enemies, items, status bars, and throwable bottles.
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         this.ctx.translate(this.cameraX, 0);
-
         this.drawObjectsIntoMap(this.level.layers);
         this.drawObjectsIntoMap(this.level.clouds);
-
         this.ctx.translate(-this.cameraX, 0);
         //space for fixed objects
         this.drawIntoMap(this.statusBar);
@@ -320,58 +350,64 @@ class World {
         this.drawIntoMap(this.coinBar);
         this.drawIntoMap(this.bottleBar);
         this.ctx.translate(this.cameraX, 0);
-
         this.drawObjectsIntoMap(this.level.items);
         this.drawObjectsIntoMap(this.level.enemies);
         this.drawIntoMap(this.endboss);
         this.drawObjectsIntoMap(this.throwableBottles);
-
         this.drawIntoMap(this.character);
-
-
         this.ctx.translate(-this.cameraX, 0);
-
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
     }
 
+    /**
+     * Draws an array of game objects onto the canvas.
+     * @param {Array} arr - The array of game objects to be drawn.
+     */
     drawObjectsIntoMap(arr) {
         arr.forEach(obj => {
             this.drawIntoMap(obj);
         });
     }
 
+    /**
+     * Draws a single game object onto the canvas.
+     * @param {Object} obj - The game object to be drawn.
+     */
     drawIntoMap(obj) {
-        /*  otherDirection = true / Taste nach Links wurde gedrückt  */
+        // Flip the image horizontally if needed
         if (obj.otherDirection) {
             this.flipImage(obj);
         }
 
-        //draw Object
+        // Draw the object
         obj.draw(this.ctx);
 
-        //draw rectangle
-        /* obj.drawFrame(this.ctx); */
-        /* obj.drawFrameRed(this.ctx); */
-        /* obj.drawFrameGreen(this.ctx); */
-
-        /*  otherDirection = false / Taste nach Links wurde nicht gedrückt  */
+        // Flip the image back to its original state
         if (obj.otherDirection) {
             this.flipImageBack(obj);
         }
     }
 
+    /**
+     * Flips an image horizontally.
+     * @param {Object} obj - The object whose image needs to be flipped.
+     */
     flipImage(obj) {
-        this.ctx.save(); // Einstellungen werden gespeichert
-        this.ctx.translate(obj.width, 0); // Der Translate-Befehl setzt die gedrehte Position des Objektes neu, indem die Breite des Objektes abgezogen wird
-        this.ctx.scale(-1, 1); // Das Pbjekt wird negiert (gedreht) in den Canvas gelade (scaliert)
-        obj.x = obj.x * -1; //Die x-Koordinate des Objektes muß einmal negiert werden, weil die X-Achse im Cnavas umgedreht wird (0 ist jetzt Rechts)
+        this.ctx.save(); // Save current canvas settings
+        this.ctx.translate(obj.width, 0); // Set the new position for the flipped object
+        this.ctx.scale(-1, 1); // Flip the object horizontally
+        obj.x = obj.x * -1; // Adjust the x-coordinate of the object because the canvas axis is flipped
     }
 
+    /**
+     * Restores the canvas settings after flipping an image.
+     * @param {Object} obj - The object whose image was flipped.
+     */
     flipImageBack(obj) {
-        this.ctx.restore(); // Normale Einstellungen des Canvas werden wieder geladen
-        obj.x = obj.x * -1; // X-Achse wird wieder zurück gedreht (0 ist wieder Links)
+        this.ctx.restore(); // Restore canvas settings to their previous state
+        obj.x = obj.x * -1; // Restore the x-coordinate of the object to its original state
     }
 }
