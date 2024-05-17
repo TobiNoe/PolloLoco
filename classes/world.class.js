@@ -246,14 +246,37 @@ class World {
     }
 
 
+    /**
+     * Checks if the character has jumped on top of any enemies.
+     * If the character successfully jumps on an enemy, the enemy's hit progress starts.
+     */
     checkJumpOn() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isJumpOn(enemy) && !this.character.isColliding(enemy) && this.character.speedY < 0) {
-                enemy.hit();
-                this.hitEnemySound.play();
+            if (this.isJumpOn(enemy)) {
+                this.startProgressEnemyHit(enemy);
             }
         });
     }
+
+    /**
+     * Checks if the character has successfully jumped on top of a specific enemy.
+     * @param {Object} enemy - The enemy to check for the jump-on collision.
+     * @returns {boolean} True if the character has successfully jumped on the enemy and is not colliding with it.
+     */
+    isJumpOn(enemy) {
+        return this.character.isJumpOn(enemy) && !this.character.isColliding(enemy) && this.character.speedY < 0;
+    }
+
+    /**
+     * Initiates the hit progress for an enemy when the character successfully jumps on it.
+     * The enemy takes damage and the hit enemy sound is played.
+     * @param {Object} enemy - The enemy that the character successfully jumped on.
+     */
+    startProgressEnemyHit(enemy) {
+        enemy.hit();
+        this.hitEnemySound.play();
+    }
+
 
     checkThrowableObject() {
         if (this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection) {
