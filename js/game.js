@@ -18,7 +18,7 @@ async function init() {
     setTimeout(() => {
         hideStartScreen();
         hideGameResult();
-    }, 300);
+    }, 200);
 }
 
 /**
