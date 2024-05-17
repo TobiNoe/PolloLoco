@@ -79,6 +79,7 @@ class Character extends MovableObject {
     snoringSound = setMutableAudio('./audio/snoring.mp3');
     lostSound = setMutableAudio('./audio/lost2.mp3');
     jumpingSound = setMutableAudio('./audio/jump.mp3');
+    fallingSound = setMutableAudio('./audio/falling.mp3')
 
     /**
     * Represents a character in the game.
@@ -171,6 +172,7 @@ class Character extends MovableObject {
     animateDeath() {
         this.timerEndScreen++;
         this.playAnimationIsDead(this.imagesDead);
+        this.fallingSound.play();
     }
 
     /**
