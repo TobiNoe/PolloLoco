@@ -20,6 +20,11 @@ class ThrowableObject extends MovableObject {
     throwSound = setMutableAudio('./audio/throw.mp3');
     bottleBreakSound = setMutableAudio('./audio/bottleBreak.mp3');
 
+    /**
+     * Creates a new throwable bottle object.
+     * @param {number} x - The initial x-coordinate of the bottle.
+     * @param {number} y - The initial y-coordinate of the bottle.
+     */
     constructor(x, y) {
         super().loadImage('./img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
         this.loadImages(this.bottleRotation);
@@ -30,37 +35,71 @@ class ThrowableObject extends MovableObject {
         this.animation();
     }
 
+    /**
+     * Initializes the bottle's position and starts the throwing action.
+     * @param {number} x - The initial x-coordinate of the bottle.
+     * @param {number} y - The initial y-coordinate of the bottle.
+     */
     throw(x, y) {
         this.x = x;
         this.y = y;
         this.speedY = 10;
         this.applyGravity();
-        setStoppableInterval(() => {
-            if (this.notOnGround()) {
-                this.x += 5;
-            } else {
-                this.y = 360;
-                this.speedY = 0;
-                /* this.bottleBreakSound.play(); */
-            }
-        }, 25);
+        setStoppableInterval(() => this.throwBottle(), 25);
     }
 
+    /**
+     * Updates the bottle's position while it is being thrown.
+     * Moves the bottle to the right if it is not on the ground; otherwise, stops its vertical movement.
+     */
+    throwBottle() {
+        if (this.notOnGround()) {
+            this.x += 5;
+        } else {
+            this.y = 360;
+            this.speedY = 0;
+        }
+    }
+
+    /**
+     * Starts the bottle's animation.
+     * Sets an interval to animate the bottle flying.
+     */
     animation() {
-        setStoppableInterval(() => {
-            if (this.notOnGround() && !this.isBroken) {
-                this.playAnimation(this.bottleRotation);
-            } else if (!this.notOnGround() || this.isBroken) {
-                this.playAnimationIsBroken(this.bottleSplash);
-            }
-
-        }, 100);
+        setStoppableInterval(() => this.animateBottleFlying(), 100);
     }
 
+    /**
+     * Checks if the bottle is not broken.
+     * @returns {boolean} True if the bottle is not broken, otherwise false.
+     */
+    isNotBroken() {
+        return !this.isBroken;
+    }
+
+    /**
+     * Checks if the bottle is not on the ground.
+     * @returns {boolean} True if the bottle is not on the ground, otherwise false.
+     */
     notOnGround() {
         return this.y < 360;
     }
 
+    /**
+     * Animates the bottle while it is flying.
+     * Plays the flying animation if the bottle is not on the ground and not broken,
+     * otherwise plays the broken animation.
+     */
+    animateBottleFlying() {
+        if (this.notOnGround() && this.isNotBroken()) this.playAnimation(this.bottleRotation);
+        else if (!this.notOnGround() || !this.isNotBroken()) this.playAnimationIsBroken(this.bottleSplash);
+    }
+
+    /**
+     * Plays the animation for the broken bottle.
+     * Resets the current image if needed and plays the broken animation sequence.
+     * @param {Array} images - The array of images to be used for the broken animation.
+     */
     playAnimationIsBroken(images) {
         if (this.resetCurrentImage) {
             this.currentImage = 0;
@@ -74,5 +113,4 @@ class ThrowableObject extends MovableObject {
             this.throwing = false;
         }
     }
-
 }
