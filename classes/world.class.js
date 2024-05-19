@@ -253,7 +253,7 @@ class World {
      */
     checkJumpOn() {
         this.level.enemies.forEach((enemy) => {
-            if (this.isJumpOn(enemy)) {
+            if (this.isJumpOn(enemy) && !enemy.isDead()) {
                 this.startProgressEnemyHit(enemy);
             }
         });
