@@ -75,7 +75,7 @@ class World {
     */
     checkEndbossStartWalking() {
         if (this.character.x > 2200) {
-            this.endboss.speed = 0.5;
+            this.endboss.speed = 0.7;
         }
     }
 
@@ -96,9 +96,10 @@ class World {
     checkEndbossAttack() {
         if (this.endboss.x - this.character.x < 200) {
             this.endboss.isAttack = true;
-        } else {
-            this.endboss.isAttack = false;
-        }
+            this.endboss.speed = 0.8;
+        } else if (this.endboss.x - this.character.x >= 200 && this.endboss.speed > 0) {
+            this.endboss.isAttack = false; 
+        } 
     }
 
     /**
