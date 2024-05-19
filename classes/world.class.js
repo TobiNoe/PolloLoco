@@ -292,7 +292,7 @@ class World {
      * @returns {boolean} True if the character is pressing the throw button, alive, has collected bottles, and is not facing the other direction.
      */
     isThrowingBottle() {
-        return this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection;
+        return this.keyboard.w && !this.character.isDead() && this.collectedBottles > 0 && !this.character.otherDirection && this.throwableBottles.length === 0;
     }
 
     /**
