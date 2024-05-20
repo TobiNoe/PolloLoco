@@ -40,14 +40,19 @@ function loadLevel1() {
         ],
         //Enemies
         [
-            new Chicken(),
-            new Chick(),
-            new Chicken(),
-            new Chick(),
-            new Chicken(),
-            new Chick(),
-            new Chicken(),
-            new Chick()
+            new Chicken(150, 625),
+            new Chick(150, 625),
+            new Chicken(625, 1250),
+            new Chicken(625, 1250),
+            new Chick(625, 1250),
+            new Chicken(1250, 1875),
+            new Chicken(1250, 1875),
+            new Chick(1250, 1875),
+            new Chicken(1875, 2500),
+            new Chicken(1875, 2500),
+            new Chick(1875, 2500),
+            new Chicken(1875, 2500),
+            new Chick(1875, 2500)
         ],
         //Clouds
         [

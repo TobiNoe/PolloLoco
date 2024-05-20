@@ -13,8 +13,8 @@ class Chick extends Chicken {
      * Creates an instance of YourClass.
      * @constructor
      */
-    constructor() {
-        super();
+    constructor(min, max) {
+        super().x = Math.random() * (max - min) + min;
         this.loadImages(this.imagesWalking);
     }
 }
