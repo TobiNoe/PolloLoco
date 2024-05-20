@@ -77,7 +77,6 @@ function unmuteAudio() {
 function checkMuteOn(soundFile) {
     if (audioElements[0].volume === 0) {
         soundFile.volume = 0;
-        console.log(soundFile);
         return soundFile;
     }
 }
@@ -95,9 +94,7 @@ function stopGame() {
 function restartGame() {
     let count = intervalIDs.length;
     intervalIDs.forEach(index => {
-        /* console.log(index); */
         setStoppableInterval(intervalFN[index - 1].fnName, intervalFN[index - 1].interval);
-        /* intervalIDs.splice() */
     });
     intervalIDs.splice(0, count);
 }

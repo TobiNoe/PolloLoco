@@ -55,7 +55,6 @@ class World {
             this.checkEndbossStartWalking();
             this.checkCollisionEndboss();
             this.checkStopSong();
-            /* console.log('character sleepTimer:', this.character.sleepTimer); */
         }, 25);
     }
 
