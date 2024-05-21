@@ -277,7 +277,6 @@ class World {
         this.hitEnemySound.play();
     }
 
-
     /**
      * Checks if the character is attempting to throw a bottle and initiates the throwing action if so.
      */
@@ -337,6 +336,7 @@ class World {
     /**
      * Draws all game elements onto the canvas.
      * This includes the background, characters, enemies, items, status bars, and throwable bottles.
+     * Sapce for fixed Objects between this.ctx.translate(-this.cameraX, 0); and this.ctx.translate(this.cameraX, 0);
      */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -344,7 +344,6 @@ class World {
         this.drawObjectsIntoMap(this.level.layers);
         this.drawObjectsIntoMap(this.level.clouds);
         this.ctx.translate(-this.cameraX, 0);
-        //space for fixed objects
         this.drawIntoMap(this.statusBar);
         this.drawIntoMap(this.statusBarEndboss);
         this.drawIntoMap(this.coinBar);
@@ -377,15 +376,10 @@ class World {
      * @param {Object} obj - The game object to be drawn.
      */
     drawIntoMap(obj) {
-        // Flip the image horizontally if needed
         if (obj.otherDirection) {
             this.flipImage(obj);
         }
-
-        // Draw the object
         obj.draw(this.ctx);
-
-        // Flip the image back to its original state
         if (obj.otherDirection) {
             this.flipImageBack(obj);
         }
@@ -396,10 +390,10 @@ class World {
      * @param {Object} obj - The object whose image needs to be flipped.
      */
     flipImage(obj) {
-        this.ctx.save(); // Save current canvas settings
-        this.ctx.translate(obj.width, 0); // Set the new position for the flipped object
-        this.ctx.scale(-1, 1); // Flip the object horizontally
-        obj.x = obj.x * -1; // Adjust the x-coordinate of the object because the canvas axis is flipped
+        this.ctx.save();
+        this.ctx.translate(obj.width, 0);
+        this.ctx.scale(-1, 1);
+        obj.x = obj.x * -1;
     }
 
     /**
@@ -407,7 +401,7 @@ class World {
      * @param {Object} obj - The object whose image was flipped.
      */
     flipImageBack(obj) {
-        this.ctx.restore(); // Restore canvas settings to their previous state
-        obj.x = obj.x * -1; // Restore the x-coordinate of the object to its original state
+        this.ctx.restore();
+        obj.x = obj.x * -1;
     }
 }

@@ -11,7 +11,6 @@ class Coin extends CollactableObject {
     ];
     collectCoinSound = setMutableAudio('./audio/collectCoin.mp3');
 
-
     /**
     * Represents a Coin object.
     * @constructor

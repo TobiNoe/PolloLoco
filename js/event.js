@@ -1,8 +1,8 @@
+/**
+ * Handles keydown events.
+ * @param {KeyboardEvent} e - The keydown event object.
+ */
 window.addEventListener('keydown', (e) => {
-    /**
-     * Handles keydown events
-     * @param {object} e - The keydown event object
-     */
     if (e.code === 'Space') {
         keyboard.space = true;
     }
@@ -20,11 +20,11 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
+/**
+ * Handles keyup events.
+ * @param {KeyboardEvent} e - The keyup event object.
+ */
 window.addEventListener('keyup', (e) => {
-    /**
-     * Handles keyup events
-     * @param {object} e - The keyup event object
-     */
     if (e.code === 'Space') {
         keyboard.space = false;
     }
@@ -43,43 +43,72 @@ window.addEventListener('keyup', (e) => {
 });
 
 /**
- * Add touch event listeners to handle touchstart and touchend events on buttons.
+ * Handles touchstart event for the left button.
+ * @param {TouchEvent} e - The touchstart event object.
  */
 document.getElementById('btnLeft').addEventListener('touchstart', (e) => {
     e.preventDefault();
     keyboard.left = true;
 });
 
+/**
+ * Handles touchend event for the left button.
+ * @param {TouchEvent} e - The touchend event object.
+ */
 document.getElementById('btnLeft').addEventListener('touchend', (e) => {
     e.preventDefault();
     keyboard.left = false;
 });
 
+/**
+ * Handles touchstart event for the right button.
+ * @param {TouchEvent} e - The touchstart event object.
+ */
 document.getElementById('btnRight').addEventListener('touchstart', (e) => {
     e.preventDefault();
     keyboard.right = true;
 });
 
+/**
+ * Handles touchend event for the right button.
+ * @param {TouchEvent} e - The touchend event object.
+ */
 document.getElementById('btnRight').addEventListener('touchend', (e) => {
     e.preventDefault();
     keyboard.right = false;
 });
 
+/**
+ * Handles touchstart event for the throw button.
+ * @param {TouchEvent} e - The touchstart event object.
+ */
 document.getElementById('btnThrow').addEventListener('touchstart', (e) => {
     e.preventDefault();
     keyboard.w = true;
 });
 
+/**
+ * Handles touchend event for the throw button.
+ * @param {TouchEvent} e - The touchend event object.
+ */
 document.getElementById('btnThrow').addEventListener('touchend', (e) => {
     e.preventDefault();
     keyboard.w = false;
 });
 
+/**
+ * Handles touchstart event for the jump button.
+ * @param {TouchEvent} e - The touchstart event object.
+ */
 document.getElementById('btnJump').addEventListener('touchstart', (e) => {
     e.preventDefault();
     keyboard.space = true;
 });
 
+/**
+ * Handles touchend event for the jump button.
+ * @param {TouchEvent} e - The touchend event object.
+ */
 document.getElementById('btnJump').addEventListener('touchend', (e) => {
     e.preventDefault();
     keyboard.space = false;

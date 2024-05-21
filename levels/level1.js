@@ -8,7 +8,6 @@
 function loadLevel1() {
 
     const level1 = new Level(
-        //Layer
         [
             new LayerObject('./img/5_background/layers/air.png', -719),
             new LayerObject('./img/5_background/layers/3_third_layer/2.png', -719),
@@ -38,7 +37,6 @@ function loadLevel1() {
             new LayerObject('./img/5_background/layers/2_second_layer/1.png', 719 * 4),
             new LayerObject('./img/5_background/layers/1_first_layer/1.png', 719 * 4)
         ],
-        //Enemies
         [
             new Chicken(150, 625),
             new Chick(150, 625),
@@ -54,7 +52,6 @@ function loadLevel1() {
             new Chicken(1875, 2500),
             new Chick(1875, 2500)
         ],
-        //Clouds
         [
             new Cloud(),
             new Cloud(),

@@ -10,7 +10,7 @@ class Bottle extends CollactableObject {
         './img/6_salsa_bottle/2_salsa_bottle_on_ground.png'
     ]
     collectBottleSound = setMutableAudio('./audio/collect.mp3');
-
+    
     /**
      * Creates an instance of YourClass.
      * @constructor

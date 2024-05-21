@@ -73,7 +73,7 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/long_idle/I-20.png'
     ]
     world;
-    speed = 1; // speed default 1
+    speed = 1.2;
     sleepTimer = 0;
     walkingSound = setMutableAudio('./audio/walking.mp3');
     snoringSound = setMutableAudio('./audio/snoring.mp3');
@@ -123,8 +123,6 @@ class Character extends MovableObject {
                 this.jump();
             }
         }
-
-        // Move the game camera with the character
         this.world.cameraX = -this.x + 50;
     }
 
