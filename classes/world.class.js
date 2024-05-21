@@ -95,7 +95,7 @@ class World {
     checkEndbossAttack() {
         if (this.endboss.x - this.character.x < 200) {
             this.endboss.isAttack = true;
-            this.endboss.speed = 0.8;
+            this.endboss.speed = 0.9;
         } else if (this.endboss.x - this.character.x >= 200 && this.endboss.speed > 0) {
             this.endboss.isAttack = false; 
         } 
