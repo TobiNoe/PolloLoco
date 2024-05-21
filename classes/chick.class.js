@@ -1,4 +1,4 @@
-class Chick extends Chicken {
+class Chick extends Enemy {
     y = 370;
     height = 50;
     width = 50;
@@ -10,11 +10,23 @@ class Chick extends Chicken {
     imageDead = 'img/3_enemies_chicken/chicken_small/2_dead/dead.png';
 
     /**
-     * Creates an instance of YourClass.
-     * @constructor
+     * Create a Chicken instance.
      */
     constructor(min, max) {
-        super().x = Math.random() * (max - min) + min;
+        super().loadImage('./img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
+        this.x = Math.random() * (max - min) + min;
         this.loadImages(this.imagesWalking);
+        this.speed = 0.10 + Math.random() * 0.25;
+        this.animate();
+        this.applyGravity();
+    }
+
+    /**
+     * Animate the chicken object.
+     */
+    animate() {
+        setStoppableInterval(() => this.moveLeft(this.speed), 25);
+        setStoppableInterval(() => this.animateChicken(), 200);
+        setStoppableInterval(() => this.chickJump(), 100);
     }
 }
