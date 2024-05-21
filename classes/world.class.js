@@ -1,6 +1,6 @@
 class World {
-    character = new Character();
     level = loadLevel1();
+    character = new Character();
     canvas;
     ctx;
     keyboard;
@@ -15,7 +15,6 @@ class World {
     endboss = new Endboss();
     hitSound = setMutableAudio('./audio/hit.mp3');
     hitEnemySound = setMutableAudio('./audio/hitandbirds.mp3');
-    songSound = setMutableAudio('./audio/song.mp3');
 
     /**
     * Creates an instance of App.
@@ -38,8 +37,6 @@ class World {
     */
     setWorld() {
         this.character.world = this;
-        this.songSound.loop = true;
-        this.songSound.play();
     }
 
     /**
@@ -328,8 +325,7 @@ class World {
      */
     checkStopSong() {
         if (this.character.energy === 0 || this.endboss.energy === 0) {
-            this.songSound.loop = false;
-            this.songSound.pause();
+            stopBackgroundSound();
         }
     }
 

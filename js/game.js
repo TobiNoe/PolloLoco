@@ -1,22 +1,44 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let songSound = setMutableAudio('./audio/song.mp3');
 
 
 /**
- * Initializes the code when the page loads.
+ * Initializes the code when the page loads. Async function
  */
-async function init() {
+function init() {
+    canvas = document.getElementById('canvas');
+    intervalIDs = [];
+    world = new World(canvas, keyboard);
+    hideGameResult();
+    showMobileControlPad();
+    showInfo();
+}
+
+function startGame() {
+    hideStartScreen();
+    playBackgroundSound();
+}
+
+function resetGame() {
     canvas = document.getElementById('canvas');
     intervalIDs = [];
     world = new World(canvas, keyboard);
     unmuteAudio();
-    showMobileControlPad();
     resetGameResult();
-    setTimeout(() => {
-        hideStartScreen();
-        hideGameResult();
-    }, 200);
+    hideGameResult();
+    playBackgroundSound();
+}
+
+function playBackgroundSound() {
+    songSound.loop = true;
+    songSound.play();
+}
+
+function stopBackgroundSound() {
+    songSound.pause();   
+    songSound.currentTime = 0;
 }
 
 /**
