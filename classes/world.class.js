@@ -62,7 +62,7 @@ class World {
         setStoppableInterval(() => {
             this.checkThrowableObject();
             this.checkSplashedBottles();
-        }, 100);
+        }, 25);
     }
 
     /**
