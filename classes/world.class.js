@@ -27,8 +27,8 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkPriorityEvents();
         this.checkEvents();
-        this.checkThrowing();
     }
 
     /**
@@ -40,29 +40,29 @@ class World {
     }
 
     /**
-     * check possible Events and call the checkFunctions for possibilities
+     * check possible priority Events and call the checkFunctions for possibilities
      */
-    checkEvents() {
+    checkPriorityEvents() {
         setStoppableInterval(() => {
-            this.checkCollisionEnemys();
             this.checkJumpOn();
+            this.checkCollisionEnemys();
             this.checkCollisionCollectableItems();
-            this.checkEndbossAlert();
-            this.checkEndbossAttack();
-            this.checkEndbossStartWalking();
             this.checkCollisionEndboss();
-            this.checkStopSong();
+            this.checkThrowableObject();
         }, 25);
     }
 
     /**
-    * Sets up an interval to check and handle throwable objects and splashed bottles.
+    * Scheck possible Events and call the checkFunctions for possibilities
     */
-    checkThrowing() {
+    checkEvents() {
         setStoppableInterval(() => {
-            this.checkThrowableObject();
             this.checkSplashedBottles();
-        }, 25);
+            this.checkEndbossAlert();
+            this.checkEndbossAttack();
+            this.checkEndbossStartWalking();
+            this.checkStopSong();
+        }, 150);
     }
 
     /**

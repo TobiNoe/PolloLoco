@@ -26,7 +26,7 @@ class Chick extends Enemy {
      */
     animate() {
         setStoppableInterval(() => this.moveLeft(this.speed), 25);
-        setStoppableInterval(() => this.animateChicken(), 200);
+        setStoppableInterval(() => this.animateChicken(), 300);
         setStoppableInterval(() => this.chickJump(), 100);
     }
 }
