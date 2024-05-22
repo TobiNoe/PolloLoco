@@ -16,11 +16,17 @@ function init() {
     showInfo();
 }
 
+/**
+ * Starts the game by hiding the start screen and playing the background sound.
+ */
 function startGame() {
     hideStartScreen();
     playBackgroundSound();
 }
 
+/**
+ * Resets the game state, initializes the game world, and plays the background sound.
+ */
 function resetGame() {
     canvas = document.getElementById('canvas');
     intervalIDs = [];
@@ -31,15 +37,22 @@ function resetGame() {
     playBackgroundSound();
 }
 
+/**
+ * Plays the background sound in a loop.
+ */
 function playBackgroundSound() {
     songSound.loop = true;
     songSound.play();
 }
 
+/**
+ * Stops the background sound and resets its playback position to the beginning.
+ */
 function stopBackgroundSound() {
     songSound.pause();   
     songSound.currentTime = 0;
 }
+
 
 /**
 * Hides the start screen and displays the game screen.
