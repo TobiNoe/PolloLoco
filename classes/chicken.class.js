@@ -10,7 +10,9 @@ class Chicken extends Enemy {
         './img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
         './img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
     ];
-    imageDead = './img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
+    imagesDead = [
+        './img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
+    ];
 
     /**
      * Create a Chicken instance.
@@ -19,6 +21,7 @@ class Chicken extends Enemy {
         super().loadImage('./img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.x = Math.random() * (max - min) + min;
         this.loadImages(this.imagesWalking);
+        this.loadImages(this.imagesDead);
         this.speed = 0.10 + Math.random() * 0.25;
         this.animate();
     }

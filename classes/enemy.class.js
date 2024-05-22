@@ -13,7 +13,7 @@ class Enemy extends MovableObject {
      */
     animateChicken() {
         if (this.isDead()) {
-            this.loadImage(this.imageDead);
+            this.playAnimation(this.imagesDead);
         } else {
             this.playAnimation(this.imagesWalking);
         }

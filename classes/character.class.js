@@ -71,7 +71,10 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/long_idle/I-18.png',
         './img/2_character_pepe/1_idle/long_idle/I-19.png',
         './img/2_character_pepe/1_idle/long_idle/I-20.png'
-    ]
+    ];
+    imagesStand = [
+        './img/2_character_pepe/1_idle/idle/I-1.png'
+    ];
     world;
     speed = 1.0;
     sleepTimer = 0;
@@ -86,6 +89,7 @@ class Character extends MovableObject {
     */
     constructor() {
         super().loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
+        this.loadImages(this.imagesStand);
         this.loadImages(this.imagesIdle);
         this.loadImages(this.imagesSleep);
         this.loadImages(this.imagesWalking);
@@ -265,7 +269,7 @@ class Character extends MovableObject {
     * Play the stand animation.
     */
     playStandAnimation() {
-        this.loadImage('./img/2_character_pepe/1_idle/idle/I-1.png');
+        this.playAnimation(this.imagesStand);
     }
 
     /**

@@ -44,6 +44,9 @@ class Endboss extends MovableObject {
         './img/4_enemie_boss_chicken/3_attack/G19.png',
         './img/4_enemie_boss_chicken/3_attack/G20.png'
     ];
+    imagesStand = [
+        './img/4_enemie_boss_chicken/1_walk/G1.png'
+    ];
     isAlert = false;
     isAttack = false;
     wonSound = setMutableAudio('./audio/win.mp3');
@@ -52,9 +55,10 @@ class Endboss extends MovableObject {
     * Represents a endboss in the game.
     */
     constructor() {
-        super().loadImage('./img/4_enemie_boss_chicken/2_alert/G5.png');
+        super().loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
         this.x = 2550;
         this.speed = 0;
+        this.loadImages(this.imagesStand);
         this.loadImages(this.imagesWalking);
         this.loadImages(this.imagesHurt);
         this.loadImages(this.imagesAlert);
@@ -162,7 +166,7 @@ class Endboss extends MovableObject {
      * Plays the stand animation.
      */
     playStandAnimation() {
-        this.loadImage('./img/4_enemie_boss_chicken/1_walk/G1.png');
+        this.playAnimation(this.imagesStand);
     }
 
     /**
