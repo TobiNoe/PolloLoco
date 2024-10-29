@@ -76,7 +76,8 @@ class Character extends MovableObject {
         './img/2_character_pepe/1_idle/idle/I-1.png'
     ];
     world;
-    speed = 1.0;
+    /* TODO: speed 1.0  */
+    speed = 2.0;
     sleepTimer = 0;
     walkingSound = setMutableAudio('./audio/walking.mp3');
     snoringSound = setMutableAudio('./audio/snoring.mp3');
