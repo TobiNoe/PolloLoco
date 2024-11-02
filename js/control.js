@@ -95,9 +95,10 @@ function stopGame() {
 function restartGame() {
     let count = intervalIDs.length;
     intervalIDs.forEach(index => {
-        setStoppableInterval(intervalFN[index - 1].fnName, intervalFN[index - 1].interval);
+        setStoppableInterval(intervalFN[intervalIDs.indexOf(index)].fnName, intervalFN[intervalIDs.indexOf(index)].interval);
     });
     intervalIDs.splice(0, count);
+    intervalFN.splice(0, count);
     console.log('intervallIDs :>> ', intervalIDs);
     console.log('intervallFN :>> ', intervalFN);
 }
