@@ -23,8 +23,7 @@ function init() {
  */
 function startGame() {
     hideStartScreen();
-    /* TODO: sound comment entfernen */
-    /* playBackgroundSound(); */
+    playBackgroundSound();
 }
 
 /**
@@ -33,6 +32,7 @@ function startGame() {
 function resetGame() {
     canvas = document.getElementById('canvas');
     intervalIDs = [];
+    intervalFN = [];
     world = new World(canvas, keyboard);
     unmuteAudio();
     resetGameResult();

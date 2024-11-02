@@ -91,7 +91,6 @@ function stopGame() {
 /**
 * Restarts all intervals that were previously stopped.
 */
-/* TODO: untersuchen Warum die Intervalle doppelt im Array landen ggf. die IntervallFN splicen wie die IntervallIDs */
 function restartGame() {
     let count = intervalIDs.length;
     intervalIDs.forEach(index => {
