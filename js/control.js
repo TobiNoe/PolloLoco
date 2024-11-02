@@ -98,8 +98,6 @@ function restartGame() {
     });
     intervalIDs.splice(0, count);
     intervalFN.splice(0, count);
-    console.log('intervallIDs :>> ', intervalIDs);
-    console.log('intervallFN :>> ', intervalFN);
 }
 
 /**

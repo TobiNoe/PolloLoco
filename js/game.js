@@ -11,8 +11,6 @@ function init() {
     canvas = document.getElementById('canvas');
     intervalIDs = [];
     world = new World(canvas, keyboard);
-    console.log('intervallIDs :>> ', intervalIDs);
-    console.log('intervallFN :>> ', intervalFN);
     hideGameResult();
     showMobileControlPad();
     showInfo();
